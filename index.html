@@ -381,7 +381,7 @@
 <div id="gallery">
 
   <!-- PHOTOGRAPHY SECTION -->
-  <div class="series-section" data-cat="photo" style="display:none;">
+  <div class="series-section" data-cat="photo">
 
     <div class="series-block">
       <div class="series-header">
@@ -832,11 +832,7 @@
       gallery.style.display = 'block';
       aboutSection.style.display = 'none';
       sections.forEach(section => {
-        if (section.dataset.cat === filter) {
-          section.style.display = 'block';
-        } else {
-          section.style.display = 'none';
-        }
+        section.style.display = (section.getAttribute('data-cat') === filter) ? 'block' : 'none';
       });
     }
   }
@@ -845,10 +841,11 @@
     btn.addEventListener('click', () => {
       btns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      applyFilter(btn.dataset.filter);
+      applyFilter(btn.getAttribute('data-filter'));
     });
   });
 
+  // Init
   applyFilter('photo');
 
   // LIGHTBOX

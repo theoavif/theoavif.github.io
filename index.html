@@ -355,11 +355,23 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
+    -webkit-touch-callout: none;
     pointer-events: none;
   }
 
   .gallery-item {
     pointer-events: auto;
+    overflow: hidden;
+    background: var(--light);
+    position: relative;
+  }
+
+  .gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
   }
 </style>
 </head>
@@ -900,8 +912,13 @@
     if (e.target.tagName === 'IMG') e.preventDefault();
   });
 
+  document.addEventListener('dragstart', e => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
+
   document.querySelectorAll('img').forEach(img => {
     img.addEventListener('dragstart', e => e.preventDefault());
+    img.addEventListener('contextmenu', e => e.preventDefault());
   });
 </script>
 </body>

@@ -381,7 +381,7 @@
 <div id="gallery">
 
   <!-- PHOTOGRAPHY SECTION -->
-  <div class="series-section" data-cat="photo">
+  <div class="series-section" data-cat="photo" style="display:none;">
 
     <div class="series-block">
       <div class="series-header">
@@ -832,7 +832,11 @@
       gallery.style.display = 'block';
       aboutSection.style.display = 'none';
       sections.forEach(section => {
-        section.style.display = section.dataset.cat === filter ? 'block' : 'none';
+        if (section.dataset.cat === filter) {
+          section.style.display = 'block';
+        } else {
+          section.style.display = 'none';
+        }
       });
     }
   }

@@ -183,7 +183,7 @@
   .gallery-item.hidden { display: none; }
 
   /* SERIES */
-  .series-section { display: block; }
+  .series-section { }
 
   .series-block {
     padding: 2.5rem 2rem 1.5rem;
@@ -381,7 +381,7 @@
 <div id="gallery">
 
   <!-- PHOTOGRAPHY SECTION -->
-  <div class="series-section" data-cat="photo">
+  <div class="series-section" data-cat="photo" style="display:none;">
 
     <div class="series-block">
       <div class="series-header">
@@ -480,8 +480,6 @@
 
       </div>
     </div>
-
-  </div>
 
     <div class="series-block">
       <div class="series-header">
@@ -845,8 +843,9 @@
     });
   });
 
-  // Init
-  applyFilter('photo');
+  // Init - cache tout puis affiche photo
+  sections.forEach(s => s.style.display = 'none');
+  document.querySelector('.series-section[data-cat="photo"]').style.display = 'block';
 
   // LIGHTBOX
   const lightbox = document.getElementById('lightbox');

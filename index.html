@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theo Avif</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --black: #111111;
+    --gray: #888888;
+    --light: #f5f5f5;
+    --white: #ffffff;
+    --border: #e8e8e8;
+  }
+
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 52px;
+  }
+
+  .nav-logo {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--black);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--gray);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--black);
+  }
+
+  /* HERO */
+  .hero {
+    margin-top: 52px;
+    padding: 5rem 2rem 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 200;
+    letter-spacing: 0.15em;
+    line-height: 1.05;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
+  }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero p {
+    font-size: 13px;
+    color: var(--gray);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* FILTER TABS */
+  .filter-bar {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    overflow-x: auto;
+  }
+
+  .filter-btn {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 1rem 1.5rem 0.9rem;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    margin-bottom: -1px;
+  }
+
+  .filter-btn:hover { color: var(--black); }
+  .filter-btn.active {
+    color: var(--black);
+    border-bottom-color: var(--black);
+  }
+
+  /* GALLERY GRID */
+  .gallery {
+    padding: 2rem;
+    columns: 3;
+    column-gap: 1rem;
+  }
+
+  @media (max-width: 900px) { .gallery { columns: 2; } }
+  @media (max-width: 500px) { .gallery { columns: 1; } }
+
+  .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    background: var(--light);
+  }
+
+  .gallery-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-item:hover img {
+    transform: scale(1.03);
+  }
+
+  .gallery-item-info {
+    padding: 0.6rem 0;
+  }
+
+  .gallery-item-title {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .gallery-item-meta {
+    font-size: 11px;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+
+  .gallery-item-price {
+    font-size: 12px;
+    color: var(--black);
+    margin-top: 4px;
+  }
+
+  /* HIDDEN items */
+  .gallery-item.hidden { display: none; }
+
+  /* SERIES */
+  .series-section { display: block; }
+
+  .series-block {
+    padding: 2.5rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .series-block:last-child { border-bottom: none; }
+
+  .series-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .series-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+
+  .series-year {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.05em;
+  }
+
+  .series-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 900px) { .series-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .series-grid { grid-template-columns: 1fr; } }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.97);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .lightbox.open { display: flex; }
+
+  .lightbox-inner {
+    max-width: 900px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 700px) {
+    .lightbox-inner { grid-template-columns: 1fr; }
+  }
+
+  .lightbox-img {
+    width: 100%;
+    display: block;
+  }
+
+  .lightbox-close {
+    position: fixed;
+    top: 1.5rem; right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--black);
+    line-height: 1;
+  }
+
+  .lightbox-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  .lightbox-cat {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+  }
+
+  .lightbox-desc {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .lightbox-price {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+
+  .lightbox-price.sold {
+    color: var(--gray);
+    text-decoration: line-through;
+  }
+
+  .contact-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--black);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--black);
+    cursor: pointer;
+    background: none;
+    transition: all 0.2s;
+    width: 100%;
+    text-align: center;
+  }
+
+  .contact-btn:hover {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4rem;
+  }
+
+  footer p {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 0.05em;
+  }
+
+  footer a {
+    font-size: 11px;
+    color: var(--gray);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  footer a:hover { color: var(--black); }
+
+  img {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .gallery-item {
+    pointer-events: auto;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Theo Avif</a>
+  <ul class="nav-links">
+    <li><a href="https://instagram.com/theo.avif" target="_blank">Instagram</a></li>
+    <li><a href="mailto:theoavif@gmail.com">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <h1>THEO AVIF</h1>
+
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="photo">Photography</button>
+  <button class="filter-btn" data-filter="peinture">Painting</button>
+  <button class="filter-btn" data-filter="collage">Collage</button>
+  <button class="filter-btn" data-filter="about" id="aboutBtn">About</button>
+</div>
+
+<div id="gallery">
+
+  <!-- PHOTOGRAPHY SECTION -->
+  <div class="series-section" data-cat="photo">
+
+    <div class="series-block">
+      <div class="series-header">
+        <span class="series-title">¿A DÓNDE VAS?</span>
+        <span class="series-year">2026</span>
+      </div>
+      <div class="series-grid">
+        <div class="gallery-item" data-title="¿A Dónde Vas? #01" data-desc="Analogue photography. Barcelona, 2026." data-price="150 €" data-available="true">
+          <img src="https://placehold.co/600x800/f0f0f0/888?text=ADV+01" alt="¿A Dónde Vas? 01">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">¿A Dónde Vas? #01</div>
+            <div class="gallery-item-price">150 €</div>
+          </div>
+        </div>
+        <div class="gallery-item" data-title="¿A Dónde Vas? #02" data-desc="Analogue photography. Barcelona, 2026." data-price="150 €" data-available="true">
+          <img src="https://placehold.co/600x700/f0f0f0/888?text=ADV+02" alt="¿A Dónde Vas? 02">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">¿A Dónde Vas? #02</div>
+            <div class="gallery-item-price">150 €</div>
+          </div>
+        </div>
+        <div class="gallery-item" data-title="¿A Dónde Vas? #03" data-desc="Analogue photography. Barcelona, 2026." data-price="150 €" data-available="false">
+          <img src="https://placehold.co/600x900/f0f0f0/888?text=ADV+03" alt="¿A Dónde Vas? 03">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">¿A Dónde Vas? #03</div>
+            <div class="gallery-item-price">Sold</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="series-block">
+      <div class="series-header">
+        <span class="series-title">CONCRETE FLOWERS</span>
+        <span class="series-year">2023</span>
+      </div>
+      <div class="series-grid">
+        <div class="gallery-item" data-title="Concrete Flowers #01" data-desc="Analogue photography. Architecture series, Europe 2023." data-price="150 €" data-available="true">
+          <img src="https://placehold.co/600x800/f0f0f0/888?text=CF+01" alt="Concrete Flowers 01">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Concrete Flowers #01</div>
+            <div class="gallery-item-price">150 €</div>
+          </div>
+        </div>
+        <div class="gallery-item" data-title="Concrete Flowers #02" data-desc="Analogue photography. Architecture series, Europe 2023." data-price="150 €" data-available="true">
+          <img src="https://placehold.co/600x750/f0f0f0/888?text=CF+02" alt="Concrete Flowers 02">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Concrete Flowers #02</div>
+            <div class="gallery-item-price">150 €</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- COLLAGE SECTION -->
+  <div class="series-section" data-cat="collage" style="display:none;">
+
+    <div class="series-block">
+      <div class="series-header">
+        <span class="series-title">KYDZ</span>
+        <span class="series-year">2026</span>
+      </div>
+      <div class="series-grid">
+        <div class="gallery-item" data-title="KYD" data-desc="Collage. Mixed media, 2026." data-price="200 €" data-available="true">
+          <img src="https://placehold.co/600x600/f0f0f0/888?text=KYDZ+01" alt="KYD">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">KYD</div>
+            <div class="gallery-item-price">200 €</div>
+          </div>
+        </div>
+        <div class="gallery-item" data-title="BLINDERZ" data-desc="Collage. Mixed media, 2026." data-price="180 €" data-available="true">
+          <img src="https://placehold.co/600x650/f0f0f0/888?text=KYDZ+02" alt="Blinderz">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">BLINDERZ</div>
+            <div class="gallery-item-price">180 €</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="series-block">
+      <div class="series-header">
+        <span class="series-title">PERSONAL DIARIES</span>
+        <span class="series-year">2024</span>
+      </div>
+      <div class="series-grid">
+        <div class="gallery-item" data-title="Personal Diaries #01" data-desc="Collage. Mixed media, 2024." data-price="180 €" data-available="true">
+          <img src="https://placehold.co/600x600/f0f0f0/888?text=PD+01" alt="Personal Diaries 01">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Personal Diaries #01</div>
+            <div class="gallery-item-price">180 €</div>
+          </div>
+        </div>
+        <div class="gallery-item" data-title="Personal Diaries #02" data-desc="Collage. Mixed media, 2024." data-price="180 €" data-available="true">
+          <img src="https://placehold.co/600x650/f0f0f0/888?text=PD+02" alt="Personal Diaries 02">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Personal Diaries #02</div>
+            <div class="gallery-item-price">180 €</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAINTING SECTION -->
+  <div class="series-section" data-cat="peinture" style="display:none;">
+
+    <div class="series-block">
+      <div class="series-header">
+        <span class="series-title">ATRACCIÓN</span>
+        <span class="series-year">2022</span>
+      </div>
+      <div class="series-grid">
+        <div class="gallery-item" data-title="Atracción #01" data-desc="Painting. Acrylic on canvas, 2022." data-price="On request" data-available="true">
+          <img src="https://placehold.co/600x700/f0f0f0/888?text=ATR+01" alt="Atracción 01">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Atracción #01</div>
+            <div class="gallery-item-price">On request</div>
+          </div>
+        </div>
+        <div class="gallery-item" data-title="Atracción #02" data-desc="Painting. Acrylic on canvas, 2022." data-price="On request" data-available="true">
+          <img src="https://placehold.co/600x800/f0f0f0/888?text=ATR+02" alt="Atracción 02">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">Atracción #02</div>
+            <div class="gallery-item-price">On request</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ABOUT -->
+<div id="aboutSection" style="display:none; padding: 4rem 2rem; max-width: 640px;">
+
+  <p style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#888; margin-bottom:2rem;">About</p>
+
+  <p style="font-size:1.05rem; font-weight:300; line-height:1.9; margin-bottom:3rem; color:#111;">
+    French artist based in Barcelona for over eight years. Working across analogue photography, collage and painting, Theo Avif explores memory, identity and our relationship to the real in an increasingly digital world.<br><br>
+    Since 2022, he has developed a series of projects that blur the line between exhibition and experience — from painting to architecture photography, mixed media and collage.
+  </p>
+
+  <p style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#888; margin-bottom:1.5rem;">Exhibitions</p>
+
+  <table style="width:100%; border-collapse:collapse; font-size:12px;">
+    <tr style="border-top:1px solid #e8e8e8;">
+      <td style="padding:0.8rem 0; font-weight:500; letter-spacing:0.05em;">KYDZ</td>
+      <td style="padding:0.8rem 0; color:#888;">Mixed Media</td>
+      <td style="padding:0.8rem 0; color:#888; text-align:right;">March 2026</td>
+    </tr>
+    <tr style="border-top:1px solid #e8e8e8;">
+      <td style="padding:0.8rem 0; font-weight:500; letter-spacing:0.05em;">¿A DÓNDE VAS?</td>
+      <td style="padding:0.8rem 0; color:#888;">Photography</td>
+      <td style="padding:0.8rem 0; color:#888; text-align:right;">January 2026</td>
+    </tr>
+    <tr style="border-top:1px solid #e8e8e8;">
+      <td style="padding:0.8rem 0; font-weight:500; letter-spacing:0.05em;">PERSONAL DIARIES</td>
+      <td style="padding:0.8rem 0; color:#888;">Mixed Media</td>
+      <td style="padding:0.8rem 0; color:#888; text-align:right;">March 2024</td>
+    </tr>
+    <tr style="border-top:1px solid #e8e8e8;">
+      <td style="padding:0.8rem 0; font-weight:500; letter-spacing:0.05em;">CONCRETE FLOWERS</td>
+      <td style="padding:0.8rem 0; color:#888;">Photography</td>
+      <td style="padding:0.8rem 0; color:#888; text-align:right;">March 2023</td>
+    </tr>
+    <tr style="border-top:1px solid #e8e8e8; border-bottom:1px solid #e8e8e8;">
+      <td style="padding:0.8rem 0; font-weight:500; letter-spacing:0.05em;">ATRACCIÓN</td>
+      <td style="padding:0.8rem 0; color:#888;">Painting</td>
+      <td style="padding:0.8rem 0; color:#888; text-align:right;">February 2022</td>
+    </tr>
+  </table>
+
+  <div style="margin-top:3rem; display:flex; gap:2rem;">
+    <a href="https://instagram.com/theo.avif" target="_blank" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:#111; text-decoration:none;">Instagram ↗</a>
+    <a href="mailto:theoavif@gmail.com" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:#111; text-decoration:none;">Email ↗</a>
+  </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">×</button>
+  <div class="lightbox-inner">
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div>
+      <div class="lightbox-cat" id="lightboxCat"></div>
+      <div class="lightbox-title" id="lightboxTitle"></div>
+      <div class="lightbox-desc" id="lightboxDesc"></div>
+      <div class="lightbox-price" id="lightboxPrice"></div>
+      <a class="contact-btn" id="lightboxContact" href="mailto:theoavif@gmail.com">Enquire about this work</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Theo Avif</p>
+  <a href="https://instagram.com/theo.avif" target="_blank">@theo.avif</a>
+</footer>
+
+<script>
+  const btns = document.querySelectorAll('.filter-btn');
+  const sections = document.querySelectorAll('.series-section');
+  const gallery = document.getElementById('gallery');
+  const aboutSection = document.getElementById('aboutSection');
+
+  function applyFilter(filter) {
+    if (filter === 'about') {
+      gallery.style.display = 'none';
+      aboutSection.style.display = 'block';
+    } else {
+      gallery.style.display = 'block';
+      aboutSection.style.display = 'none';
+      sections.forEach(section => {
+        section.style.display = section.dataset.cat === filter ? 'block' : 'none';
+      });
+    }
+  }
+
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilter(btn.dataset.filter);
+    });
+  });
+
+  applyFilter('photo');
+
+  // LIGHTBOX
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbTitle = document.getElementById('lightboxTitle');
+  const lbCat = document.getElementById('lightboxCat');
+  const lbDesc = document.getElementById('lightboxDesc');
+  const lbPrice = document.getElementById('lightboxPrice');
+  const lbContact = document.getElementById('lightboxContact');
+
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbTitle.textContent = item.dataset.title;
+      const section = item.closest('.series-section');
+      const cat = section ? section.dataset.cat : '';
+      lbCat.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+      lbDesc.textContent = item.dataset.desc;
+      const available = item.dataset.available === 'true';
+      lbPrice.textContent = available ? item.dataset.price : 'Sold';
+      lbPrice.className = 'lightbox-price' + (available ? '' : ' sold');
+      lbContact.style.display = available ? 'block' : 'none';
+      lbContact.href = `mailto:theoavif@gmail.com?subject=Enquiry - ${item.dataset.title}`;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  document.getElementById('lightboxClose').addEventListener('click', () => {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // IMAGE PROTECTION
+  document.addEventListener('contextmenu', e => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
+
+  document.querySelectorAll('img').forEach(img => {
+    img.addEventListener('dragstart', e => e.preventDefault());
+  });
+</script>
+</body>
+</html>

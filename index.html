@@ -174,7 +174,7 @@
     text-transform: uppercase;
   }
 
-  .gallery-item-meta {
+  .gallery-item-format {
     font-size: 11px;
     color: var(--gray);
     margin-top: 2px;
@@ -184,6 +184,11 @@
     font-size: 12px;
     color: var(--black);
     margin-top: 4px;
+  }
+
+  .gallery-item-price.sold {
+    color: var(--gray);
+    text-decoration: line-through;
   }
 
   /* HIDDEN items */
@@ -423,15 +428,17 @@
           <img src="files_photos/adv/adv_01.jpg" alt="¿A Dónde Vas? #01">
           <div class="gallery-item-info">
             <div class="gallery-item-title">¿A Dónde Vas? #01</div>
+            <div class="gallery-item-format">Format A0</div>
             <div class="gallery-item-price">200 €</div>
           </div>
         </div>
 
-        <div class="gallery-item" data-title="¿A Dónde Vas? #02" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2025" data-price="150 €" data-available="true">
+        <div class="gallery-item" data-title="¿A Dónde Vas? #02" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2025" data-price="150 €" data-available="false">
           <img src="files_photos/adv/adv_02.jpg" alt="¿A Dónde Vas? #02">
           <div class="gallery-item-info">
             <div class="gallery-item-title">¿A Dónde Vas? #02</div>
-            <div class="gallery-item-price">150 €</div>
+            <div class="gallery-item-format">50×70cm</div>
+            <div class="gallery-item-price sold">Sold</div>
           </div>
         </div>
 
@@ -634,11 +641,12 @@
       </div>
       <div class="series-grid">
 
-        <div class="gallery-item" data-title="OUTSIDERZ" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
+        <div class="gallery-item" data-title="OUTSIDERZ" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="false">
           <img src="files_collages/kydz_outsiderz.jpg" alt="OUTSIDERZ">
           <div class="gallery-item-info">
             <div class="gallery-item-title">OUTSIDERZ</div>
-            <div class="gallery-item-price">150 €</div>
+            <div class="gallery-item-format">40×40cm</div>
+            <div class="gallery-item-price sold">Sold</div>
           </div>
         </div>
 
@@ -751,6 +759,7 @@
           <img src="files_peintures/atr_01.png" alt="Atracción #01">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Atracción #01</div>
+            <div class="gallery-item-format">100×100cm</div>
             <div class="gallery-item-price">400 €</div>
           </div>
         </div>
@@ -759,15 +768,17 @@
           <img src="files_peintures/atr_02.png" alt="Atracción #02">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Atracción #02</div>
+            <div class="gallery-item-format">120×120cm</div>
             <div class="gallery-item-price">450 €</div>
           </div>
         </div>
 
-        <div class="gallery-item" data-title="Atracción #03" data-desc="Painting · Acrylic on canvas · 100×100cm · 2026" data-price="850 €" data-available="true">
+        <div class="gallery-item" data-title="Atracción #03" data-desc="Painting · Acrylic on canvas · 100×100cm · 2026" data-price="850 €" data-available="false">
           <img src="files_peintures/atr_03.png" alt="Atracción #03">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Atracción #03</div>
-            <div class="gallery-item-price">850 €</div>
+            <div class="gallery-item-format">100×100cm</div>
+            <div class="gallery-item-price sold">Sold</div>
           </div>
         </div>
 

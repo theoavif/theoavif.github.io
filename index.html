@@ -407,9 +407,9 @@
 </div>
 
 <div class="filter-bar">
-  <button class="filter-btn active" data-filter="photo">Photography</button>
-  <button class="filter-btn" data-filter="peinture">Painting</button>
+  <button class="filter-btn active" data-filter="peinture">Painting</button>
   <button class="filter-btn" data-filter="collage">Collage</button>
+  <button class="filter-btn" data-filter="photo">Photography</button>
   <button class="filter-btn" data-filter="about" id="aboutBtn">About</button>
 </div>
 
@@ -761,19 +761,19 @@
           </div>
         </div>
 
-        <div class="gallery-item" data-title="Atracción #02" data-desc="Painting · Acrylic on canvas · 120×120cm · 2026" data-price="850 €" data-available="true">
+        <div class="gallery-item" data-title="Atracción #02" data-desc="Painting · Acrylic on canvas · 120×120cm · 2026" data-price="450 €" data-available="true">
           <img src="files_peintures/atr_02.png" alt="Atracción #02">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Atracción #02</div>
-            <div class="gallery-item-price">850 €</div>
+            <div class="gallery-item-price">450 €</div>
           </div>
         </div>
 
-        <div class="gallery-item" data-title="Atracción #03" data-desc="Painting · Acrylic on canvas · 100×100cm · 2026" data-price="450 €" data-available="true">
+        <div class="gallery-item" data-title="Atracción #03" data-desc="Painting · Acrylic on canvas · 100×100cm · 2026" data-price="850 €" data-available="true">
           <img src="files_peintures/atr_03.png" alt="Atracción #03">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Atracción #03</div>
-            <div class="gallery-item-price">450 €</div>
+            <div class="gallery-item-price">850 €</div>
           </div>
         </div>
 
@@ -878,9 +878,9 @@
     });
   });
 
-  // Init - cache tout puis affiche photo
+  // Init - cache tout puis affiche peinture
   sections.forEach(s => s.style.display = 'none');
-  document.querySelector('.series-section[data-cat="photo"]').style.display = 'block';
+  document.querySelector('.series-section[data-cat="peinture"]').style.display = 'block';
 
   // LIGHTBOX
   const lightbox = document.getElementById('lightbox');

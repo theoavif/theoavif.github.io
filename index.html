@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v3.1 -->
+<!-- v3.2 -->
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -232,8 +232,10 @@
     gap: 1rem;
   }
 
-  .series-section[data-cat="photo"] .series-grid {
-    grid-template-columns: repeat(4, 1fr);
+  .series-section[data-cat="collage"] .series-grid .gallery-item img {
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
   }
 
   @media (max-width: 900px) { .series-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -707,6 +709,15 @@
             <div class="gallery-item-title">OUTSIDERZ</div>
             <div class="gallery-item-format">40×40cm</div>
             <div class="gallery-item-price" style="color:#888;">150 € — <span style="color:#e00; text-transform:uppercase; letter-spacing:0.05em;">Sold</span></div>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-title="TRUE LIES" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
+          <img src="files_collages/kydz_truelies.jpg" alt="TRUE LIES">
+          <div class="gallery-item-info">
+            <div class="gallery-item-title">TRUE LIES</div>
+            <div class="gallery-item-format">40×40cm</div>
+            <div class="gallery-item-price">150 €</div>
           </div>
         </div>
 

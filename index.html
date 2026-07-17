@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v3.4 -->
+<!-- v3.7 -->
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -166,6 +166,14 @@
 
   .gallery-item-info {
     padding: 0.6rem 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .gallery-item-info-left {
+    display: flex;
+    flex-direction: column;
   }
 
   .gallery-item-title {
@@ -190,6 +198,24 @@
   .gallery-item-price.sold {
     color: var(--gray);
     text-decoration: line-through;
+  }
+
+  .inquire-btn {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--black);
+    border: 1px solid var(--black);
+    padding: 4px 10px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .inquire-btn:hover {
+    background: var(--black);
+    color: var(--white);
   }
 
   /* HIDDEN items */
@@ -839,12 +865,12 @@
           </div>
         </div>
 
-        <div class="gallery-item" data-title="Atracción #03" data-desc="Painting · Acrylic on canvas · 120×120cm · 2026" data-price="850 €" data-available="false">
+        <div class="gallery-item" data-title="Atracción #03" data-desc="Painting · Acrylic on canvas · 120×120cm · 2026" data-price="850 €" data-available="true">
           <img src="files_peintures/atr_03.png" alt="Atracción #03">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Atracción #03</div>
             <div class="gallery-item-format">120×120cm</div>
-            <div class="gallery-item-price" style="color:#888;">850 € — <span style="color:#e00; text-transform:uppercase; letter-spacing:0.05em;">Sold</span></div>
+            <div class="gallery-item-price">850 €</div>
           </div>
         </div>
 
@@ -998,7 +1024,23 @@
     }
   });
 
-  // IMAGE PROTECTION
+  // INQUIRE BUTTONS
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    const info = item.querySelector('.gallery-item-info');
+    const children = Array.from(info.children);
+    const left = document.createElement('div');
+    left.className = 'gallery-item-info-left';
+    children.forEach(child => left.appendChild(child));
+    info.appendChild(left);
+
+    if (item.dataset.available === 'true') {
+      const btn = document.createElement('a');
+      btn.className = 'inquire-btn';
+      btn.href = `mailto:theoavif@gmail.com?subject=Inquiry - ${item.dataset.title}`;
+      btn.textContent = 'Inquire';
+      info.appendChild(btn);
+    }
+  });
   document.addEventListener('contextmenu', e => {
     if (e.target.tagName === 'IMG') e.preventDefault();
   });

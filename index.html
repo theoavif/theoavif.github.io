@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v3.8 -->
+<!-- v3.9 -->
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -411,9 +411,33 @@
     pointer-events: none;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
   }
+  /* SCROLL TO TOP */
+  #scrollTop {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 36px;
+    height: 36px;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  #scrollTop:hover { opacity: 1; }
+
 </style>
 </head>
 <body>
+
+<button id="scrollTop">↑</button>
 
 <nav>
   <a class="nav-logo" href="#">Theo Avif</a>
@@ -1043,6 +1067,15 @@
       info.appendChild(btn);
     }
   });
+  // SCROLL TO TOP
+  const scrollBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
   document.addEventListener('contextmenu', e => {
     if (e.target.tagName === 'IMG') e.preventDefault();
   });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v3.7 -->
+<!-- v3.8 -->
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -1036,7 +1036,9 @@
     if (item.dataset.available === 'true') {
       const btn = document.createElement('a');
       btn.className = 'inquire-btn';
-      btn.href = `mailto:theoavif@gmail.com?subject=Inquiry - ${item.dataset.title}`;
+      const msg = encodeURIComponent(`Hi, I'm interested in "${item.dataset.title}". Could you give me more information?`);
+      btn.href = `https://wa.me/33618254337?text=${msg}`;
+      btn.target = '_blank';
       btn.textContent = 'Inquire';
       info.appendChild(btn);
     }

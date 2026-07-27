@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v5.2 -->
+<!-- v6.0 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -14,6 +14,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    min-height: 100%;
+  }
 
   :root {
     --black: #111111;
@@ -449,10 +453,10 @@
 
   /* LANDING PAGE */
   #landing {
-    position: fixed;
-    inset: 0;
+    width: 100%;
+    height: 100vh;
     display: flex;
-    z-index: 500;
+    z-index: 10;
   }
 
   .landing-side {
@@ -651,84 +655,21 @@
 </head>
 <body>
 
-<!-- LANDING PAGE -->
-<div id="landing">
-  <div class="landing-side landing-left" id="goServices">
-    <div class="landing-content">
-      <div class="landing-label">Services</div>
-      <div class="landing-sub">Photography · Art Direction · Web</div>
-    </div>
-  </div>
-  <div class="landing-side landing-right" id="goGallery">
-    <div class="landing-content">
-      <div class="landing-label">Gallery</div>
-      <div class="landing-sub">Painting · Collage · Photography</div>
-    </div>
-  </div>
-</div>
-
-<!-- SERVICES SECTION -->
-<div id="servicesSection">
-  <nav class="services-nav">
-    <a class="services-nav-logo" id="servicesBackBtn">Theo Avif</a>
-    <ul class="services-nav-links">
-      <li><a href="https://instagram.com/theo.avif" target="_blank">Instagram</a></li>
-      <li><a href="mailto:theoavif@gmail.com">Contact</a></li>
-    </ul>
-  </nav>
-
-  <div class="services-hero">
-    <h1>SERVICES</h1>
-  </div>
-
-  <div class="services-intro">
-    Based in Barcelona, available in French, Spanish and English. Each project is unique — feel free to reach out to discuss your ideas.
-  </div>
-
-  <div class="services-list">
-    <div class="service-item">
-      <div class="service-title">Event Photography</div>
-      <div class="service-desc">Capturing moments, energy and atmosphere.</div>
-    </div>
-    <div class="service-item">
-      <div class="service-title">Art Direction</div>
-      <div class="service-desc">Visual concepts for projects, shoots and campaigns.</div>
-    </div>
-    <div class="service-item">
-      <div class="service-title">Photography for Artists & Brands</div>
-      <div class="service-desc">Clean, intentional images that reflect your identity.</div>
-    </div>
-    <div class="service-item">
-      <div class="service-title">Visual Identity & Digital Presence</div>
-      <div class="service-desc">From concept to online presence.</div>
-    </div>
-  </div>
-
-  <div class="services-contact">
-    <a class="services-contact-btn" href="https://wa.me/33618254337?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank">Get in touch</a>
-  </div>
-
-  <footer class="services-footer">
-    <p>© 2026 Theo Avif</p>
-    <a href="https://instagram.com/theo.avif" target="_blank">@theo.avif</a>
-  </footer>
-</div>
-
 <button id="scrollTop">↑</button>
 
-<nav id="mainNav" style="display:none;">
-  <a class="nav-logo" id="galleryBackBtn" style="cursor:pointer;">Theo Avif</a>
+<nav>
+  <a class="nav-logo" href="#">Theo Avif</a>
   <ul class="nav-links">
     <li><a href="https://instagram.com/theo.avif" target="_blank">Instagram</a></li>
     <li><a href="mailto:theoavif@gmail.com">Contact</a></li>
   </ul>
 </nav>
 
-<div class="hero" id="mainHero" style="display:none;">
+<div class="hero">
   <h1>THEO AVIF</h1>
 </div>
 
-<div class="filter-bar" id="mainFilterBar" style="display:none;">
+<div class="filter-bar" id="mainFilterBar">
   <button class="filter-btn active" data-filter="peinture">Painting</button>
   <button class="filter-btn" data-filter="collage">Collage</button>
   <button class="filter-btn" data-filter="photo">Photography</button>
@@ -1253,64 +1194,6 @@
 </footer>
 
 <script>
-  // LANDING NAVIGATION
-  const landing = document.getElementById('landing');
-  const servicesSection = document.getElementById('servicesSection');
-  const mainNav = document.getElementById('mainNav');
-  const mainHero = document.getElementById('mainHero');
-  const mainFilterBar = document.getElementById('mainFilterBar');
-  const mainGallery = document.getElementById('gallery');
-  const mainAbout = document.getElementById('aboutSection');
-  const mainFooter = document.querySelector('footer');
-
-  function showGallery() {
-    landing.style.display = 'none';
-    servicesSection.style.display = 'none';
-    mainNav.style.display = '';
-    mainHero.style.display = '';
-    mainFilterBar.style.display = '';
-    mainGallery.style.display = '';
-    mainFooter.style.display = '';
-    applyFilter('peinture');
-  }
-
-  function showServices() {
-    landing.style.display = 'none';
-    servicesSection.style.display = 'block';
-    document.body.style.background = '#111';
-    mainNav.style.display = 'none';
-    mainHero.style.display = 'none';
-    mainFilterBar.style.display = 'none';
-    mainGallery.style.display = 'none';
-    if (mainAbout) mainAbout.style.display = 'none';
-    mainFooter.style.display = 'none';
-  }
-
-  function showLanding() {
-    landing.style.display = 'flex';
-    servicesSection.style.display = 'none';
-    document.body.style.background = '#fff';
-    mainNav.style.display = 'none';
-    mainHero.style.display = 'none';
-    mainFilterBar.style.display = 'none';
-    mainGallery.style.display = 'none';
-    if (mainAbout) mainAbout.style.display = 'none';
-    mainFooter.style.display = 'none';
-  }
-
-  document.getElementById('goGallery').addEventListener('click', showGallery);
-  document.getElementById('goServices').addEventListener('click', showServices);
-  document.getElementById('servicesBackBtn').addEventListener('click', showLanding);
-  document.getElementById('galleryBackBtn').addEventListener('click', showLanding);
-
-  // Init
-  mainNav.style.display = 'none';
-  mainHero.style.display = 'none';
-  mainFilterBar.style.display = 'none';
-  mainGallery.style.display = 'none';
-  if (mainAbout) mainAbout.style.display = 'none';
-  mainFooter.style.display = 'none';
-
   const btns = document.querySelectorAll('.filter-btn');
   const sections = document.querySelectorAll('.series-section');
   const gallery = document.getElementById('gallery');

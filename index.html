@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v5.1 -->
+<!-- v5.2 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -509,6 +509,8 @@
     background: #111;
     color: #fff;
     min-height: 100vh;
+    position: relative;
+    z-index: 10;
   }
 
   .services-nav {
@@ -1275,22 +1277,24 @@
   function showServices() {
     landing.style.display = 'none';
     servicesSection.style.display = 'block';
+    document.body.style.background = '#111';
     mainNav.style.display = 'none';
     mainHero.style.display = 'none';
     mainFilterBar.style.display = 'none';
     mainGallery.style.display = 'none';
-    mainAbout.style.display = 'none';
+    if (mainAbout) mainAbout.style.display = 'none';
     mainFooter.style.display = 'none';
   }
 
   function showLanding() {
     landing.style.display = 'flex';
     servicesSection.style.display = 'none';
+    document.body.style.background = '#fff';
     mainNav.style.display = 'none';
     mainHero.style.display = 'none';
     mainFilterBar.style.display = 'none';
     mainGallery.style.display = 'none';
-    mainAbout.style.display = 'none';
+    if (mainAbout) mainAbout.style.display = 'none';
     mainFooter.style.display = 'none';
   }
 

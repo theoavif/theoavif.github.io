@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v4.7 -->
+<!-- v5.0 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -447,26 +447,286 @@
 
   #scrollTop:hover { background: rgba(0, 0, 0, 0.7); }
 
+  /* LANDING PAGE */
+  #landing {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    z-index: 500;
+  }
+
+  .landing-side {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: flex 0.5s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .landing-side:hover { flex: 1.15; }
+
+  .landing-left {
+    background: #111;
+  }
+
+  .landing-right {
+    background: #fff;
+    border-left: 1px solid #e8e8e8;
+  }
+
+  .landing-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 200;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .landing-left .landing-label { color: #fff; }
+  .landing-right .landing-label { color: #111; }
+
+  .landing-sub {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+    opacity: 0.5;
+  }
+
+  .landing-left .landing-sub { color: #fff; }
+  .landing-right .landing-sub { color: #111; }
+
+  .landing-content {
+    text-align: center;
+  }
+
+  /* SERVICES SECTION */
+  #servicesSection {
+    display: none;
+    background: #111;
+    color: #fff;
+    min-height: 100vh;
+  }
+
+  .services-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #222;
+  }
+
+  .services-nav-logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 200;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .services-nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .services-nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .services-nav-links a:hover { color: #fff; }
+
+  .services-hero {
+    padding: 5rem 2rem 3rem;
+    border-bottom: 1px solid #222;
+  }
+
+  .services-hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 200;
+    letter-spacing: 0.15em;
+    color: #fff;
+  }
+
+  .services-intro {
+    padding: 3rem 2rem;
+    max-width: 600px;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: #aaa;
+    border-bottom: 1px solid #222;
+  }
+
+  .services-list {
+    padding: 3rem 2rem;
+    max-width: 800px;
+  }
+
+  .service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #222;
+  }
+
+  .service-title {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  .service-desc {
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 0.05em;
+    text-align: right;
+    max-width: 300px;
+  }
+
+  .services-contact {
+    padding: 3rem 2rem;
+    border-top: 1px solid #222;
+  }
+
+  .services-contact-btn {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 0.75rem 2rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .services-contact-btn:hover {
+    background: #fff;
+    color: #111;
+    border-color: #fff;
+  }
+
+  .services-footer {
+    padding: 2rem;
+    border-top: 1px solid #222;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .services-footer p {
+    font-size: 11px;
+    color: #444;
+    letter-spacing: 0.05em;
+  }
+
+  .services-footer a {
+    font-size: 11px;
+    color: #444;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  .services-footer a:hover { color: #fff; }
+
 </style>
 </head>
 <body>
 
+<!-- LANDING PAGE -->
+<div id="landing">
+  <div class="landing-side landing-left" id="goServices">
+    <div class="landing-content">
+      <div class="landing-label">Services</div>
+      <div class="landing-sub">Photography · Art Direction · Web</div>
+    </div>
+  </div>
+  <div class="landing-side landing-right" id="goGallery">
+    <div class="landing-content">
+      <div class="landing-label">Gallery</div>
+      <div class="landing-sub">Painting · Collage · Photography</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES SECTION -->
+<div id="servicesSection">
+  <nav class="services-nav">
+    <a class="services-nav-logo" id="servicesBackBtn">Theo Avif</a>
+    <ul class="services-nav-links">
+      <li><a href="https://instagram.com/theo.avif" target="_blank">Instagram</a></li>
+      <li><a href="mailto:theoavif@gmail.com">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="services-hero">
+    <h1>SERVICES</h1>
+  </div>
+
+  <div class="services-intro">
+    Based in Barcelona, available in French, Spanish and English. Each project is unique — feel free to reach out to discuss your ideas.
+  </div>
+
+  <div class="services-list">
+    <div class="service-item">
+      <div class="service-title">Event Photography</div>
+      <div class="service-desc">Capturing moments, energy and atmosphere.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-title">Art Direction</div>
+      <div class="service-desc">Visual concepts for projects, shoots and campaigns.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-title">Photography for Artists & Brands</div>
+      <div class="service-desc">Clean, intentional images that reflect your identity.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-title">Visual Identity & Digital Presence</div>
+      <div class="service-desc">From concept to online presence.</div>
+    </div>
+  </div>
+
+  <div class="services-contact">
+    <a class="services-contact-btn" href="https://wa.me/33618254337?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank">Get in touch</a>
+  </div>
+
+  <footer class="services-footer">
+    <p>© 2026 Theo Avif</p>
+    <a href="https://instagram.com/theo.avif" target="_blank">@theo.avif</a>
+  </footer>
+</div>
+
 <button id="scrollTop">↑</button>
 
-<nav>
-  <a class="nav-logo" href="#">Theo Avif</a>
+<nav id="mainNav">
+  <a class="nav-logo" id="galleryBackBtn" style="cursor:pointer;">Theo Avif</a>
   <ul class="nav-links">
     <li><a href="https://instagram.com/theo.avif" target="_blank">Instagram</a></li>
     <li><a href="mailto:theoavif@gmail.com">Contact</a></li>
   </ul>
 </nav>
 
-<div class="hero">
+<div class="hero" id="mainHero" style="display:none;">
   <h1>THEO AVIF</h1>
-
 </div>
 
-<div class="filter-bar">
+<div class="filter-bar" id="mainFilterBar" style="display:none;">
   <button class="filter-btn active" data-filter="peinture">Painting</button>
   <button class="filter-btn" data-filter="collage">Collage</button>
   <button class="filter-btn" data-filter="photo">Photography</button>
@@ -927,8 +1187,8 @@
   <div style="max-width:640px;">
     
     <p style="font-size:1.05rem; font-weight:300; line-height:1.9; margin-bottom:3rem; color:#111;">
-      Artiste français né à Dijon, basé à Barcelona depuis plus de huit ans. Theo Avif travaille à travers la photographie argentique, le collage et la peinture pour explorer la mémoire, l'identité et notre rapport au réel à l'ère du numérique.<br><br>
-      Depuis 2022, il développe une série de projets mêlant exposition et expérience — de la photographie argentique d'architecture au collage mixed media et à la peinture acrylique. Chaque œuvre est disponible en pièce originale ou en tirage fine art.
+      French artist born in Dijon, based in Barcelona for over eight years. Theo Avif works across analogue photography, collage and painting to explore memory, identity and our relationship to the real in an increasingly digital world.<br><br>
+      Since 2022, he has developed a series of projects blending exhibition and experience — from fine art architecture photography to mixed media collage and acrylic painting. Each work is available as an original piece or limited fine art print.
     </p>
 
     <p style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#888; margin-bottom:1.5rem;">Exhibitions</p>
@@ -991,6 +1251,62 @@
 </footer>
 
 <script>
+  // LANDING NAVIGATION
+  const landing = document.getElementById('landing');
+  const servicesSection = document.getElementById('servicesSection');
+  const mainNav = document.getElementById('mainNav');
+  const mainHero = document.getElementById('mainHero');
+  const mainFilterBar = document.getElementById('mainFilterBar');
+  const mainGallery = document.getElementById('gallery');
+  const mainAbout = document.getElementById('aboutSection');
+  const mainFooter = document.querySelector('footer');
+
+  function showGallery() {
+    landing.style.display = 'none';
+    servicesSection.style.display = 'none';
+    mainNav.style.display = '';
+    mainHero.style.display = '';
+    mainFilterBar.style.display = '';
+    mainGallery.style.display = '';
+    mainFooter.style.display = '';
+    applyFilter('peinture');
+  }
+
+  function showServices() {
+    landing.style.display = 'none';
+    servicesSection.style.display = 'block';
+    mainNav.style.display = 'none';
+    mainHero.style.display = 'none';
+    mainFilterBar.style.display = 'none';
+    mainGallery.style.display = 'none';
+    mainAbout.style.display = 'none';
+    mainFooter.style.display = 'none';
+  }
+
+  function showLanding() {
+    landing.style.display = 'flex';
+    servicesSection.style.display = 'none';
+    mainNav.style.display = 'none';
+    mainHero.style.display = 'none';
+    mainFilterBar.style.display = 'none';
+    mainGallery.style.display = 'none';
+    mainAbout.style.display = 'none';
+    mainFooter.style.display = 'none';
+  }
+
+  document.getElementById('goGallery').addEventListener('click', showGallery);
+  document.getElementById('goServices').addEventListener('click', showServices);
+  document.getElementById('servicesBackBtn').addEventListener('click', showLanding);
+  document.getElementById('galleryBackBtn').addEventListener('click', showLanding);
+
+  // Init
+  mainNav.style.display = 'none';
+  mainHero.style.display = 'none';
+  mainFilterBar.style.display = 'none';
+  mainGallery.style.display = 'none';
+  if (mainAbout) mainAbout.style.display = 'none';
+  mainFooter.style.display = 'none';
+
   const btns = document.querySelectorAll('.filter-btn');
   const sections = document.querySelectorAll('.series-section');
   const gallery = document.getElementById('gallery');

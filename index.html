@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v4.3 -->
+<!-- v4.4 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -95,6 +95,22 @@
 
   @keyframes fadeUp {
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes vibrate {
+    0%   { transform: translateX(0); }
+    10%  { transform: translateX(-2px); }
+    20%  { transform: translateX(2px); }
+    30%  { transform: translateX(-2px); }
+    40%  { transform: translateX(2px); }
+    50%  { transform: translateX(-1px); }
+    60%  { transform: translateX(1px); }
+    70%  { transform: translateX(0); }
+    100% { transform: translateX(0); }
+  }
+
+  .hero h1.vibrating {
+    animation: vibrate 0.4s ease;
   }
 
   .hero p {
@@ -1073,6 +1089,13 @@
       info.appendChild(btn);
     }
   });
+  // VIBRATION TITRE
+  const heroTitle = document.querySelector('.hero h1');
+  setInterval(() => {
+    heroTitle.classList.add('vibrating');
+    setTimeout(() => heroTitle.classList.remove('vibrating'), 400);
+  }, 5000);
+
   // SEO - ENRICHIR LES ALT TAGS
   document.querySelectorAll('.gallery-item').forEach(item => {
     const img = item.querySelector('img');

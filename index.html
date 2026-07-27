@@ -1,99 +1,93 @@
 <!DOCTYPE html>
-<!-- v6.1 -->
+<!-- landing v1.0 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Theo Avif — Artiste | Peinture, Collage & Photographie Argentique | Barcelona</title>
-<meta name="description" content="Theo Avif est un artiste français basé à Barcelona. Peinture, collage et photographie argentique. Galerie d'art contemporain, expositions et tirages fine art disponibles.">
-<meta name="keywords" content="Theo Avif, artiste français, Barcelona, Dijon, collage, peinture, photographie argentique, art contemporain, galerie, KYDZ, painter, peintre, exhibition, exposition, tirage fine art, mixed media">
-<meta property="og:title" content="Theo Avif — Artiste | Barcelona">
-<meta property="og:description" content="Artiste français basé à Barcelona. Peinture, collage et photographie argentique. Art contemporain.">
-<meta property="og:url" content="https://theoavif.com">
-<meta property="og:type" content="website">
+<title>Theo Avif</title>
+<meta name="description" content="Theo Avif — French artist based in Barcelona. Gallery and Services.">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html, body {
-    min-height: 100%;
-  }
-
-  :root {
-    --black: #111111;
-    --gray: #888888;
-    --light: #f5f5f5;
-    --white: #ffffff;
-    --border: #e8e8e8;
+    height: 100%;
+    overflow: hidden;
   }
 
   body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background: var(--white);
-    color: var(--black);
-    font-size: 14px;
-    line-height: 1.5;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
-    height: 52px;
-  }
-
-  .nav-logo {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--black);
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--gray);
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover,
-  .nav-links a.active {
-    color: var(--black);
-  }
-
-  /* HERO */
-  .hero {
-    margin-top: 52px;
-    padding: 5rem 2rem 3rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .hero h1 {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 200;
-    letter-spacing: 0.15em;
-    line-height: 1.05;
-    margin-bottom: 1rem;
   }
 
+  .split {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: flex 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .side:hover { flex: 1.2; }
+
+  .side-left {
+    background: #111;
+  }
+
+  .side-right {
+    background: #fff;
+    border-left: 1px solid #e0e0e0;
+  }
+
+  .side-label {
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    font-weight: 200;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: letter-spacing 0.4s ease;
+  }
+
+  .side:hover .side-label {
+    letter-spacing: 0.3em;
+  }
+
+  .side-left .side-label { color: #fff; }
+  .side-right .side-label { color: #111; }
+
+  .side-sub {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.75rem;
+    opacity: 0.4;
+  }
+
+  .side-left .side-sub { color: #fff; }
+  .side-right .side-sub { color: #111; }
+
+  .divider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1px;
+    height: 40px;
+    background: #888;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  /* VIBRATION sur les labels */
   @keyframes vibrate {
     0%   { transform: translateX(0); }
     15%  { transform: translateX(-3px); }
@@ -105,1221 +99,60 @@
     100% { transform: translateX(0); }
   }
 
-  .hero h1.vibrating {
+  .side-label.vibrating {
     animation: vibrate 0.5s ease;
   }
 
-  .hero p {
-    font-size: 13px;
-    color: var(--gray);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  /* FILTER TABS */
-  .filter-bar {
-    display: flex;
-    gap: 0;
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    overflow-x: auto;
-  }
-
-  .filter-btn {
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    padding: 1rem 1.5rem 0.9rem;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gray);
-    cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-    margin-bottom: -1px;
-  }
-
-  .filter-btn:hover { color: var(--black); }
-  .filter-btn.active {
-    color: var(--black);
-    border-bottom-color: var(--black);
-  }
-
-  /* GALLERY GRID */
-  .gallery {
-    padding: 2rem;
-    columns: 3;
-    column-gap: 1rem;
-  }
-
-  @media (max-width: 900px) { .gallery { columns: 2; } }
-  @media (max-width: 500px) { .gallery { columns: 1; } }
-
-  .gallery-item {
-    break-inside: avoid;
-    margin-bottom: 1rem;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    background: var(--light);
-  }
-
-  .gallery-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-
-  .gallery-item {
-    pointer-events: auto;
-    overflow: hidden;
-    background: var(--light);
-  }
-
-  .gallery-item:hover img {
-    transform: scale(1.03);
-  }
-
-  .gallery-item-info {
-    padding: 0.6rem 0;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-
-  .gallery-item-info-left {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .gallery-item-title {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .gallery-item-format {
-    font-size: 11px;
-    color: var(--gray);
-    margin-top: 2px;
-  }
-
-  .gallery-item-price {
-    font-size: 12px;
-    color: var(--black);
-    margin-top: 4px;
-  }
-
-  .gallery-item-price.sold {
-    color: var(--gray);
-    text-decoration: line-through;
-  }
-
-  .inquire-btn {
-    display: inline-block;
-    margin-top: 6px;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray);
-    border: 1px solid #ccc;
-    padding: 4px 10px;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-
-  .inquire-btn:hover {
-    background: var(--black);
-    color: var(--white);
-    border-color: var(--black);
-  }
-
-  /* HIDDEN items */
-  .gallery-item.hidden { display: none; }
-
-  /* SERIES */
-  .series-section { }
-
-  .series-block {
-    padding: 2.5rem 2rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .series-block:last-child { border-bottom: none; }
-
-  .series-header {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 1.5rem;
-  }
-
-  .series-title {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--black);
-  }
-
-  .series-year {
-    font-size: 11px;
-    color: var(--gray);
-    letter-spacing: 0.05em;
-  }
-
-  .series-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-
-    @media (max-width: 900px) { .series-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 500px) { .series-grid { grid-template-columns: 1fr; } }
-
-  /* LIGHTBOX */
-  .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(255,255,255,0.97);
-    z-index: 200;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-  }
-
-  .lightbox.open { display: flex; }
-
-  .lightbox-inner {
-    max-width: 900px;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 3rem;
-    align-items: start;
-  }
-
-  @media (max-width: 700px) {
-    .lightbox-inner { grid-template-columns: 1fr; }
-  }
-
-  .lightbox-img {
-    width: 100%;
-    display: block;
-  }
-
-  .lightbox-close {
-    position: fixed;
-    top: 1.5rem; right: 1.5rem;
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    color: var(--black);
-    line-height: 1;
-  }
-
-  .lightbox-title {
-    font-size: 1.4rem;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    margin-bottom: 0.5rem;
-  }
-
-  .lightbox-cat {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 1.5rem;
-  }
-
-  .lightbox-desc {
-    font-size: 13px;
-    color: var(--gray);
-    line-height: 1.7;
-    margin-bottom: 2rem;
-  }
-
-  .lightbox-price {
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin-bottom: 1.5rem;
-  }
-
-  .lightbox-price.sold {
-    color: var(--gray);
-    text-decoration: line-through;
-  }
-
-  .contact-btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border: 1px solid var(--black);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--black);
-    cursor: pointer;
-    background: none;
-    transition: all 0.2s;
-    width: 100%;
-    text-align: center;
-  }
-
-  .contact-btn:hover {
-    background: var(--black);
-    color: var(--white);
-  }
-
   /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 4rem;
-  }
-
-  footer p {
-    font-size: 11px;
-    color: var(--gray);
-    letter-spacing: 0.05em;
-  }
-
-  footer a {
-    font-size: 11px;
-    color: var(--gray);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-  }
-
-  footer a:hover { color: var(--black); }
-
-  img {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-    pointer-events: none;
-  }
-
-  .gallery-item {
-    pointer-events: auto;
-    overflow: hidden;
-    background: var(--light);
-    position: relative;
-  }
-
-  .gallery-item::after {
-    content: 'THEO AVIF';
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    font-size: 10px;
-    font-family: 'Helvetica Neue', sans-serif;
-    letter-spacing: 0.15em;
-    color: rgba(255, 255, 255, 0.45);
-    z-index: 2;
-    pointer-events: none;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  }
-  /* SCROLL TO TOP */
-  #scrollTop {
+  .landing-footer {
     position: fixed;
     bottom: 1.5rem;
-    right: 1.5rem;
-    width: 36px;
-    height: 36px;
-    background: rgba(0, 0, 0, 0.35);
-    color: var(--white);
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 100;
-    transition: background 0.2s;
-  }
-
-  #scrollTop:hover { background: rgba(0, 0, 0, 0.7); }
-
-  /* LANDING PAGE */
-  #landing {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    z-index: 10;
-  }
-
-  .landing-side {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: flex 0.5s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .landing-side:hover { flex: 1.15; }
-
-  .landing-left {
-    background: #111;
-  }
-
-  .landing-right {
-    background: #fff;
-    border-left: 1px solid #e8e8e8;
-  }
-
-  .landing-label {
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(1.5rem, 4vw, 3rem);
-    font-weight: 200;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-
-  .landing-left .landing-label { color: #fff; }
-  .landing-right .landing-label { color: #111; }
-
-  .landing-sub {
+    left: 50%;
+    transform: translateX(-50%);
     font-size: 11px;
     letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 0.5rem;
-    opacity: 0.5;
-  }
-
-  .landing-left .landing-sub { color: #fff; }
-  .landing-right .landing-sub { color: #111; }
-
-  .landing-content {
-    text-align: center;
-  }
-
-  /* SERVICES SECTION */
-  #servicesSection {
-    display: none;
-    background: #111;
-    color: #fff;
-    min-height: 100vh;
-    position: relative;
-    z-index: 10;
-  }
-
-  .services-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem 2rem;
-    border-bottom: 1px solid #222;
-  }
-
-  .services-nav-logo {
-    font-family: 'Outfit', sans-serif;
-    font-size: 13px;
-    font-weight: 200;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .services-nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .services-nav-links a {
-    font-size: 12px;
-    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #888;
-    text-decoration: none;
-    transition: color 0.2s;
+    z-index: 20;
+    pointer-events: none;
   }
 
-  .services-nav-links a:hover { color: #fff; }
-
-  .services-hero {
-    padding: 5rem 2rem 3rem;
-    border-bottom: 1px solid #222;
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .side-label { font-size: 1.8rem; }
   }
-
-  .services-hero h1 {
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 200;
-    letter-spacing: 0.15em;
-    color: #fff;
-  }
-
-  .services-intro {
-    padding: 3rem 2rem;
-    max-width: 600px;
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.9;
-    color: #aaa;
-    border-bottom: 1px solid #222;
-  }
-
-  .services-list {
-    padding: 3rem 2rem;
-    max-width: 800px;
-  }
-
-  .service-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid #222;
-  }
-
-  .service-title {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #fff;
-  }
-
-  .service-desc {
-    font-size: 12px;
-    color: #666;
-    letter-spacing: 0.05em;
-    text-align: right;
-    max-width: 300px;
-  }
-
-  .services-contact {
-    padding: 3rem 2rem;
-    border-top: 1px solid #222;
-  }
-
-  .services-contact-btn {
-    display: inline-block;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #fff;
-    border: 1px solid #444;
-    padding: 0.75rem 2rem;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-
-  .services-contact-btn:hover {
-    background: #fff;
-    color: #111;
-    border-color: #fff;
-  }
-
-  .services-footer {
-    padding: 2rem;
-    border-top: 1px solid #222;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .services-footer p {
-    font-size: 11px;
-    color: #444;
-    letter-spacing: 0.05em;
-  }
-
-  .services-footer a {
-    font-size: 11px;
-    color: #444;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-  }
-
-  .services-footer a:hover { color: #fff; }
-
 </style>
 </head>
 <body>
 
-<button id="scrollTop">↑</button>
-
-<nav>
-  <a class="nav-logo" href="#">Theo Avif</a>
-  <ul class="nav-links">
-    <li><a href="https://instagram.com/theo.avif" target="_blank">Instagram</a></li>
-    <li><a href="mailto:theoavif@gmail.com">Contact</a></li>
-  </ul>
-</nav>
-
-<div class="hero">
-  <h1>GALLERY</h1>
+<div class="split">
+  <a class="side side-left" href="services.html">
+    <div class="side-label" id="labelServices">Services</div>
+    <div class="side-sub">Photography · Art Direction · Web</div>
+  </a>
+  <a class="side side-right" href="gallery.html">
+    <div class="side-label" id="labelGallery">Gallery</div>
+    <div class="side-sub">Painting · Collage · Photography</div>
+  </a>
 </div>
 
-<div class="filter-bar" id="mainFilterBar">
-  <button class="filter-btn active" data-filter="peinture">Painting</button>
-  <button class="filter-btn" data-filter="collage">Collage</button>
-  <button class="filter-btn" data-filter="photo">Photography</button>
-  <button class="filter-btn" data-filter="about" id="aboutBtn">About</button>
-</div>
+<div class="divider"></div>
 
-<div id="gallery">
-
-  <!-- PHOTOGRAPHY SECTION -->
-  <div class="series-section" data-cat="photo" style="display:none;">
-
-    <div class="series-block">
-      <div class="series-header">
-        <span class="series-title">¿A DÓNDE VAS?</span>
-        <span class="series-year">2025</span>
-      </div>
-      <div class="series-grid">
-
-        <div class="gallery-item" data-title="¿A Dónde Vas? #01" data-desc="Analogue photography · 50×70cm · Matt paper · Format A0 · 2025" data-price="200 €" data-available="true">
-          <img src="files_photos/adv/adv_01.jpg" alt="¿A Dónde Vas? #01">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">¿A Dónde Vas? #01</div>
-            <div class="gallery-item-format">Format A0</div>
-            <div class="gallery-item-price">200 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="¿A Dónde Vas? #02" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2025" data-price="150 €" data-available="false">
-          <img src="files_photos/adv/adv_02.jpg" alt="¿A Dónde Vas? #02">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">¿A Dónde Vas? #02</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price" style="color:#888;">150 € — <span style="color:#e00; text-transform:uppercase; letter-spacing:0.05em;">Sold</span></div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="¿A Dónde Vas? #03" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2026" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_03.jpg" alt="¿A Dónde Vas? #03">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">¿A Dónde Vas? #03</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="¿A Dónde Vas? #04" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_04.jpg" alt="¿A Dónde Vas? #04">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">¿A Dónde Vas? #04</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="¿A Dónde Vas? #05" data-desc="Analogue photography · 50×70cm · Matt paper · Lanzarote · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_05.jpg" alt="¿A Dónde Vas? #05">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">¿A Dónde Vas? #05</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="¿A Dónde Vas? #06" data-desc="Analogue photography · 50×70cm · Matt paper · Lanzarote · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_06.jpg" alt="¿A Dónde Vas? #06">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">¿A Dónde Vas? #06</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="¿A Dónde Vas? #07" data-desc="Analogue photography · 50×70cm · Matt paper · Lanzarote · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_07.jpg" alt="¿A Dónde Vas? #07">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">¿A Dónde Vas? #07</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="¿A Dónde Vas? #09" data-desc="Analogue photography · 50×70cm · Matt paper · Ibiza · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_09.jpg" alt="¿A Dónde Vas? #09">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">¿A Dónde Vas? #09</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="¿A Dónde Vas? #10" data-desc="Analogue photography · 50×70cm · Matt paper · Ibiza · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_10.jpg" alt="¿A Dónde Vas? #10">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">¿A Dónde Vas? #10</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="¿A Dónde Vas? #11" data-desc="Analogue photography · 50×70cm · Matt paper · Ibiza · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_11.jpg" alt="¿A Dónde Vas? #11">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">¿A Dónde Vas? #11</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="series-block">
-      <div class="series-header">
-        <span class="series-title">PERSONAL DIARIES</span>
-        <span class="series-year">2024</span>
-      </div>
-      <div class="series-grid">
-
-        <div class="gallery-item" data-title="Personal Diaries #01" data-desc="Analogue photography · 50×70cm · Matt paper · Belgrade · 2024" data-price="100 €" data-available="false">
-          <img src="files_photos/pd/pd_01.jpg" alt="Personal Diaries #01">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Personal Diaries #01</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price" style="color:#888;">100 € — <span style="color:#e00; text-transform:uppercase; letter-spacing:0.05em;">Sold</span></div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Personal Diaries #02" data-desc="Analogue photography · 50×70cm · Matt paper · Marrakech · 2024" data-price="100 €" data-available="true">
-          <img src="files_photos/pd/pd_02.jpg" alt="Personal Diaries #02">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Personal Diaries #02</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">100 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Personal Diaries #03" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2024" data-price="100 €" data-available="true">
-          <img src="files_photos/pd/pd_03.jpg" alt="Personal Diaries #03">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Personal Diaries #03</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">100 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Personal Diaries #04" data-desc="Analogue photography · 50×70cm · Matt paper · Bacalar · 2024" data-price="100 €" data-available="true">
-          <img src="files_photos/pd/pd_04.jpg" alt="Personal Diaries #04">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Personal Diaries #04</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">100 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Personal Diaries #05" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2024" data-price="100 €" data-available="false">
-          <img src="files_photos/pd/pd_05.jpg" alt="Personal Diaries #05">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Personal Diaries #05</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price" style="color:#888;">100 € — <span style="color:#e00; text-transform:uppercase; letter-spacing:0.05em;">Sold</span></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="series-block">
-      <div class="series-header">
-        <span class="series-title">CONCRETE FLOWERS</span>
-        <span class="series-year">2022</span>
-      </div>
-      <div class="series-grid">
-
-        <div class="gallery-item" data-title="Concrete Flowers #01" data-desc="Analogue photography · 50×70cm · Matt paper · Paris · 2022" data-price="200 €" data-available="true">
-          <img src="files_photos/flowers/cf_01.jpg" alt="Concrete Flowers #01">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Concrete Flowers #01</div>
-            <div class="gallery-item-format">Format A0</div>
-            <div class="gallery-item-price">200 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Concrete Flowers #02" data-desc="Analogue photography · 50×70cm · Matt paper · Paris · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_02.jpg" alt="Concrete Flowers #02">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Concrete Flowers #02</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">100 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Concrete Flowers #03" data-desc="Analogue photography · 50×70cm · Matt paper · Paris · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_03.jpg" alt="Concrete Flowers #03">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Concrete Flowers #03</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">100 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Concrete Flowers #04" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_04.jpg" alt="Concrete Flowers #04">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Concrete Flowers #04</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">100 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Concrete Flowers #05" data-desc="Analogue photography · 50×70cm · Matt paper · Marseille · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_05.jpg" alt="Concrete Flowers #05">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Concrete Flowers #05</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">100 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Concrete Flowers #06" data-desc="Analogue photography · 50×70cm · Matt paper · Marseille · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_06.jpg" alt="Concrete Flowers #06">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Concrete Flowers #06</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">100 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Concrete Flowers #07" data-desc="Analogue photography · 50×70cm · Matt paper · Paris · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_07.jpg" alt="Concrete Flowers #07">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Concrete Flowers #07</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">100 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Concrete Flowers #08" data-desc="Analogue photography · 50×70cm · Matt paper · Paris · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_08.jpg" alt="Concrete Flowers #08">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Concrete Flowers #08</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">100 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Concrete Flowers #09" data-desc="Analogue photography · 50×70cm · Matt paper · Paris · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_09.jpg" alt="Concrete Flowers #09">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Concrete Flowers #09</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">100 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Concrete Flowers #12" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_12.jpg" alt="Concrete Flowers #12">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Concrete Flowers #12</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">100 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Concrete Flowers #13" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_13.jpg" alt="Concrete Flowers #13">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Concrete Flowers #13</div>
-            <div class="gallery-item-format">50×70cm</div>
-            <div class="gallery-item-price">100 €</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-  <div class="series-section" data-cat="collage" style="display:none;">
-
-    <div class="series-block">
-      <div class="series-header">
-        <span class="series-title">KYDZ</span>
-        <span class="series-year">2026</span>
-      </div>
-      <div class="series-grid">
-
-        <div class="gallery-item" data-title="OUTSIDERZ" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="false">
-          <img src="files_collages/kydz_outsiderz.jpg" alt="OUTSIDERZ">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">OUTSIDERZ</div>
-            <div class="gallery-item-format">40×40cm</div>
-            <div class="gallery-item-price" style="color:#888;">150 € — <span style="color:#e00; text-transform:uppercase; letter-spacing:0.05em;">Sold</span></div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="TRUE LIES" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_truelies.jpg" alt="TRUE LIES">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">TRUE LIES</div>
-            <div class="gallery-item-format">40×40cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="UNDERGROUNDERZ" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_undergrounderz.jpg" alt="UNDERGROUNDERZ">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">UNDERGROUNDERZ</div>
-            <div class="gallery-item-format">40×40cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="K" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_k.jpg" alt="K">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">K</div>
-            <div class="gallery-item-format">40×40cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="FROM EARTH" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_fromearth.jpg" alt="FROM EARTH">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">FROM EARTH</div>
-            <div class="gallery-item-format">40×40cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="LOST IN PARADIZ" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_lostinparadiz.jpg" alt="LOST IN PARADIZ">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">LOST IN PARADIZ</div>
-            <div class="gallery-item-format">40×40cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="PLAYGIRLZ" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_playgirlz.jpg" alt="PLAYGIRLZ">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">PLAYGIRLZ</div>
-            <div class="gallery-item-format">40×40cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="CASH MONEY" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_cashmoney.jpg" alt="CASH MONEY">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">CASH MONEY</div>
-            <div class="gallery-item-format">40×40cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Z" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_z.jpg" alt="Z">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Z</div>
-            <div class="gallery-item-format">40×40cm</div>
-            <div class="gallery-item-price">150 €</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="series-block">
-      <div class="series-header">
-        <span class="series-title">PERSONAL DIARIES</span>
-        <span class="series-year">2024</span>
-      </div>
-      <div class="series-grid">
-
-        <div class="gallery-item" data-title="LE TEMPS" data-desc="Collage · Mixed media · 30×30cm · 2024" data-price="90 €" data-available="true">
-          <img src="files_collages/pd_letemps.jpg" alt="LE TEMPS">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">LE TEMPS</div>
-            <div class="gallery-item-format">40×40cm</div>
-            <div class="gallery-item-price">90 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="WALKERZ" data-desc="Collage · Mixed media · 30×30cm · 2024" data-price="90 €" data-available="true">
-          <img src="files_collages/pd_walkerz.jpg" alt="WALKERZ">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">WALKERZ</div>
-            <div class="gallery-item-format">30×30cm</div>
-            <div class="gallery-item-price">90 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="FAST TRACK" data-desc="Collage · Mixed media · 30×30cm · 2024" data-price="90 €" data-available="true">
-          <img src="files_collages/pd_fasttrack.jpg" alt="FAST TRACK">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">FAST TRACK</div>
-            <div class="gallery-item-format">30×30cm</div>
-            <div class="gallery-item-price">90 €</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-  <!-- PAINTING SECTION -->
-  <div class="series-section" data-cat="peinture" style="display:none;">
-
-    <div class="series-block">
-      <div class="series-header">
-        <span class="series-title">ATRACCIÓN</span>
-        <span class="series-year">2021 — 2026</span>
-      </div>
-      <div class="series-grid">
-
-        <div class="gallery-item" data-title="Atracción #01" data-desc="Painting · Acrylic on canvas · 100×100cm · 2021" data-price="400 €" data-available="true">
-          <img src="files_peintures/atr_01.png" alt="Atracción #01">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Atracción #01</div>
-            <div class="gallery-item-format">100×100cm</div>
-            <div class="gallery-item-price">400 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Atracción #02" data-desc="Painting · Acrylic on canvas · 100×100cm · 2026" data-price="450 €" data-available="true">
-          <img src="files_peintures/atr_02.png" alt="Atracción #02">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Atracción #02</div>
-            <div class="gallery-item-format">100×100cm</div>
-            <div class="gallery-item-price">450 €</div>
-          </div>
-        </div>
-
-        <div class="gallery-item" data-title="Atracción #03" data-desc="Painting · Acrylic on canvas · 120×120cm · 2026" data-price="850 €" data-available="true">
-          <img src="files_peintures/atr_03.png" alt="Atracción #03">
-          <div class="gallery-item-info">
-            <div class="gallery-item-title">Atracción #03</div>
-            <div class="gallery-item-format">120×120cm</div>
-            <div class="gallery-item-price">850 €</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- ABOUT -->
-<div id="aboutSection" style="display:none; padding: 4rem 2rem;">
-
-  <p style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#888; margin-bottom:2rem;">About</p>
-
-  <div style="max-width:640px;">
-    
-    <p style="font-size:1.05rem; font-weight:300; line-height:1.9; margin-bottom:3rem; color:#111;">
-      French artist born in Dijon, based in Barcelona for over eight years. Theo Avif works across analogue photography, collage and painting to explore memory, identity and our relationship to the real in an increasingly digital world.<br><br>
-      Since 2022, he has developed a series of projects blending exhibition and experience — from fine art architecture photography to mixed media collage and acrylic painting. Each work is available as an original piece or limited fine art print.
-    </p>
-
-    <p style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#888; margin-bottom:1.5rem;">Exhibitions</p>
-
-    <table style="width:100%; border-collapse:collapse; font-size:12px;">
-      <tr style="border-top:1px solid #e8e8e8;">
-        <td style="padding:0.8rem 0; font-weight:500; letter-spacing:0.05em;">KYDZ</td>
-        <td style="padding:0.8rem 0; color:#888;">Mixed Media</td>
-        <td style="padding:0.8rem 0; color:#888; text-align:right;">March 2026</td>
-      </tr>
-      <tr style="border-top:1px solid #e8e8e8;">
-        <td style="padding:0.8rem 0; font-weight:500; letter-spacing:0.05em;">¿A DÓNDE VAS?</td>
-        <td style="padding:0.8rem 0; color:#888;">Photography</td>
-        <td style="padding:0.8rem 0; color:#888; text-align:right;">January 2026</td>
-      </tr>
-      <tr style="border-top:1px solid #e8e8e8;">
-        <td style="padding:0.8rem 0; font-weight:500; letter-spacing:0.05em;">PERSONAL DIARIES</td>
-        <td style="padding:0.8rem 0; color:#888;">Mixed Media</td>
-        <td style="padding:0.8rem 0; color:#888; text-align:right;">March 2024</td>
-      </tr>
-      <tr style="border-top:1px solid #e8e8e8;">
-        <td style="padding:0.8rem 0; font-weight:500; letter-spacing:0.05em;">CONCRETE FLOWERS</td>
-        <td style="padding:0.8rem 0; color:#888;">Photography</td>
-        <td style="padding:0.8rem 0; color:#888; text-align:right;">March 2023</td>
-      </tr>
-      <tr style="border-top:1px solid #e8e8e8; border-bottom:1px solid #e8e8e8;">
-        <td style="padding:0.8rem 0; font-weight:500; letter-spacing:0.05em;">ATRACCIÓN</td>
-        <td style="padding:0.8rem 0; color:#888;">Painting</td>
-        <td style="padding:0.8rem 0; color:#888; text-align:right;">February 2022</td>
-      </tr>
-    </table>
-
-    <div style="margin-top:3rem; display:flex; gap:2rem;">
-      <a href="https://instagram.com/theo.avif" target="_blank" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:#111; text-decoration:none;">Instagram ↗</a>
-      <a href="mailto:theoavif@gmail.com" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:#111; text-decoration:none;">Email ↗</a>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lightboxClose">×</button>
-  <div class="lightbox-inner">
-    <img class="lightbox-img" id="lightboxImg" src="" alt="">
-    <div>
-      <div class="lightbox-cat" id="lightboxCat"></div>
-      <div class="lightbox-title" id="lightboxTitle"></div>
-      <div class="lightbox-desc" id="lightboxDesc"></div>
-      <div class="lightbox-price" id="lightboxPrice"></div>
-      <a class="contact-btn" id="lightboxContact" href="mailto:theoavif@gmail.com">Enquire about this work</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <p>© 2026 Theo Avif</p>
-  <a href="https://instagram.com/theo.avif" target="_blank">@theo.avif</a>
-</footer>
+<div class="landing-footer">Theo Avif — Barcelona</div>
 
 <script>
-  const btns = document.querySelectorAll('.filter-btn');
-  const sections = document.querySelectorAll('.series-section');
-  const gallery = document.getElementById('gallery');
-  const aboutSection = document.getElementById('aboutSection');
+  // Vibration toutes les 5 secondes sur les deux labels
+  const labels = [
+    document.getElementById('labelServices'),
+    document.getElementById('labelGallery')
+  ];
 
-  function applyFilter(filter) {
-    if (filter === 'about') {
-      gallery.style.display = 'none';
-      aboutSection.style.display = 'block';
-    } else {
-      gallery.style.display = 'block';
-      aboutSection.style.display = 'none';
-      sections.forEach(section => {
-        section.style.display = (section.getAttribute('data-cat') === filter) ? 'block' : 'none';
-      });
-    }
-  }
-
-  btns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      applyFilter(btn.getAttribute('data-filter'));
-    });
-  });
-
-  // Init - cache tout puis affiche peinture
-  sections.forEach(s => s.style.display = 'none');
-  document.querySelector('.series-section[data-cat="peinture"]').style.display = 'block';
-
-  // LIGHTBOX
-  const lightbox = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lightboxImg');
-  const lbTitle = document.getElementById('lightboxTitle');
-  const lbCat = document.getElementById('lightboxCat');
-  const lbDesc = document.getElementById('lightboxDesc');
-  const lbPrice = document.getElementById('lightboxPrice');
-  const lbContact = document.getElementById('lightboxContact');
-
-  document.querySelectorAll('.gallery-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const img = item.querySelector('img');
-      lbImg.src = img.src;
-      lbImg.alt = img.alt;
-      lbTitle.textContent = item.dataset.title;
-      const section = item.closest('.series-section');
-      const cat = section ? section.dataset.cat : '';
-      lbCat.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
-      lbDesc.textContent = item.dataset.desc;
-      const available = item.dataset.available === 'true';
-      lbPrice.textContent = available ? item.dataset.price : 'Sold';
-      lbPrice.className = 'lightbox-price' + (available ? '' : ' sold');
-      lbContact.style.display = available ? 'block' : 'none';
-      lbContact.href = `mailto:theoavif@gmail.com?subject=Enquiry - ${item.dataset.title}`;
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  document.getElementById('lightboxClose').addEventListener('click', () => {
-    lightbox.classList.remove('open');
-    document.body.style.overflow = '';
-  });
-
-  lightbox.addEventListener('click', e => {
-    if (e.target === lightbox) {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-  });
-
-  // INQUIRE BUTTONS
-  document.querySelectorAll('.gallery-item').forEach(item => {
-    const info = item.querySelector('.gallery-item-info');
-    const children = Array.from(info.children);
-    const left = document.createElement('div');
-    left.className = 'gallery-item-info-left';
-    children.forEach(child => left.appendChild(child));
-    info.appendChild(left);
-
-    if (item.dataset.available === 'true') {
-      const btn = document.createElement('a');
-      btn.className = 'inquire-btn';
-      const msg = encodeURIComponent(`Hi, I'm interested in "${item.dataset.title}". Could you give me more information?`);
-      btn.href = `https://wa.me/33618254337?text=${msg}`;
-      btn.target = '_blank';
-      btn.textContent = 'Inquire';
-      info.appendChild(btn);
-    }
-  });
-  // VIBRATION TITRE
-  const heroTitle = document.querySelector('.hero h1');
   setInterval(() => {
-    heroTitle.classList.add('vibrating');
-    setTimeout(() => heroTitle.classList.remove('vibrating'), 500);
+    labels.forEach(label => {
+      label.classList.add('vibrating');
+      setTimeout(() => label.classList.remove('vibrating'), 500);
+    });
   }, 5000);
-
-  // SEO - ENRICHIR LES ALT TAGS
-  document.querySelectorAll('.gallery-item').forEach(item => {
-    const img = item.querySelector('img');
-    if (img && item.dataset.desc) {
-      img.alt = `${item.dataset.title} — ${item.dataset.desc} — Theo Avif`;
-    }
-  });
-
-  // SCROLL TO TOP
-  const scrollBtn = document.getElementById('scrollTop');
-  window.addEventListener('scroll', () => {
-    scrollBtn.style.display = window.scrollY > 300 ? 'flex' : 'none';
-  });
-  scrollBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  document.addEventListener('contextmenu', e => {
-    if (e.target.tagName === 'IMG') e.preventDefault();
-  });
-
-  document.addEventListener('dragstart', e => {
-    if (e.target.tagName === 'IMG') e.preventDefault();
-  });
-
-  document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('dragstart', e => e.preventDefault());
-    img.addEventListener('contextmenu', e => e.preventDefault());
-  });
 </script>
 </body>
 </html>

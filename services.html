@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- services v3.0 -->
+<!-- services v4.0 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -158,34 +158,38 @@
     text-align: right;
   }
 
-  /* PHOTO SCROLL */
+  /* PHOTO MARQUEE */
   .photo-section {
     border-top: 1px solid #222;
     border-bottom: 1px solid #222;
     overflow: hidden;
+    height: 400px;
   }
 
-  .photo-strip {
+  @media (max-width: 600px) { .photo-section { height: 240px; } }
+
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .photo-track {
     display: flex;
     gap: 4px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    height: 420px;
-    cursor: grab;
+    height: 100%;
+    width: max-content;
+    animation: marquee 35s linear infinite;
   }
 
-  .photo-strip:active { cursor: grabbing; }
-  .photo-strip::-webkit-scrollbar { display: none; }
+  .photo-track:hover {
+    animation-play-state: paused;
+  }
 
-  .photo-strip img {
+  .photo-track img {
     height: 100%;
     width: auto;
     display: block;
     flex-shrink: 0;
-    scroll-snap-align: start;
     filter: brightness(0.88);
     transition: filter 0.3s ease;
     -webkit-user-select: none;
@@ -193,10 +197,6 @@
     pointer-events: none;
     object-fit: cover;
   }
-
-  .photo-strip img:hover { filter: brightness(1); }
-
-  @media (max-width: 600px) { .photo-strip { height: 260px; } }
 
   /* CONTACT */
   .contact-section {
@@ -263,7 +263,7 @@
 </div>
 
 <div class="intro">
-  <p>Based in Barcelona, I work across analogue photography, video, painting and collage — capturing moments, emotions and stories with intention.</p>
+  <p>Based in Barcelona, I work across digital and analogue photography, video, painting and collage — capturing moments, emotions and stories with intention.</p>
   <p>Each project is unique. I work independently or alongside a team of creatives — videographers, stylists, set designers — depending on what the project calls for.</p>
   <p class="intro-meta">Available in French, Spanish and English.</p>
 </div>
@@ -288,8 +288,15 @@
 </div>
 
 <div class="photo-section">
-  <div class="photo-strip" id="photoStrip">
-    <!-- Remplace les src par tes vrais fichiers dans files_services/ -->
+  <div class="photo-track">
+    <!-- Images en double pour la boucle seamless -->
+    <img src="files_services/01.jpg" alt="Theo Avif — Services">
+    <img src="files_services/02.jpg" alt="Theo Avif — Services">
+    <img src="files_services/03.jpg" alt="Theo Avif — Services">
+    <img src="files_services/04.jpg" alt="Theo Avif — Services">
+    <img src="files_services/05.jpg" alt="Theo Avif — Services">
+    <img src="files_services/06.jpg" alt="Theo Avif — Services">
+    <!-- Copie pour boucle infinie -->
     <img src="files_services/01.jpg" alt="Theo Avif — Services">
     <img src="files_services/02.jpg" alt="Theo Avif — Services">
     <img src="files_services/03.jpg" alt="Theo Avif — Services">
@@ -310,30 +317,11 @@
 </footer>
 
 <script>
-  // Vibration titre
   const title = document.getElementById('servicesTitle');
   setInterval(() => {
     title.classList.add('vibrating');
     setTimeout(() => title.classList.remove('vibrating'), 500);
   }, 5000);
-
-  // Drag to scroll sur le strip photos
-  const strip = document.getElementById('photoStrip');
-  let isDown = false, startX, scrollLeft;
-
-  strip.addEventListener('mousedown', e => {
-    isDown = true;
-    startX = e.pageX - strip.offsetLeft;
-    scrollLeft = strip.scrollLeft;
-  });
-  strip.addEventListener('mouseleave', () => isDown = false);
-  strip.addEventListener('mouseup', () => isDown = false);
-  strip.addEventListener('mousemove', e => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - strip.offsetLeft;
-    strip.scrollLeft = scrollLeft - (x - startX) * 1.2;
-  });
 
   document.addEventListener('contextmenu', e => {
     if (e.target.tagName === 'IMG') e.preventDefault();

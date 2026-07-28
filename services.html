@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- services v1.0 -->
+<!-- services v3.0 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -99,6 +99,34 @@
     border-bottom: 1px solid #222;
   }
 
+  .intro p { margin-bottom: 1.2rem; }
+
+  .intro-meta {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #444;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .intro-link {
+    display: inline-block;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #aaa;
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .intro-link:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+
   /* SERVICES LIST */
   .services-list {
     padding: 2rem;
@@ -130,9 +158,50 @@
     text-align: right;
   }
 
+  /* PHOTO SCROLL */
+  .photo-section {
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    overflow: hidden;
+  }
+
+  .photo-strip {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    height: 420px;
+    cursor: grab;
+  }
+
+  .photo-strip:active { cursor: grabbing; }
+  .photo-strip::-webkit-scrollbar { display: none; }
+
+  .photo-strip img {
+    height: 100%;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    filter: brightness(0.88);
+    transition: filter 0.3s ease;
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    object-fit: cover;
+  }
+
+  .photo-strip img:hover { filter: brightness(1); }
+
+  @media (max-width: 600px) { .photo-strip { height: 260px; } }
+
   /* CONTACT */
   .contact-section {
     padding: 3rem 2rem;
+    border-top: 1px solid #222;
   }
 
   .contact-btn {
@@ -160,7 +229,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 
   footer p {
@@ -194,7 +263,9 @@
 </div>
 
 <div class="intro">
-  Based in Barcelona, available in French, Spanish and English. Each project is unique — feel free to reach out to discuss your ideas.
+  <p>Based in Barcelona, I work across analogue photography, video, painting and collage — capturing moments, emotions and stories with intention.</p>
+  <p>Each project is unique. I work independently or alongside a team of creatives — videographers, stylists, set designers — depending on what the project calls for.</p>
+  <p class="intro-meta">Available in French, Spanish and English.</p>
 </div>
 
 <div class="services-list">
@@ -216,8 +287,21 @@
   </div>
 </div>
 
+<div class="photo-section">
+  <div class="photo-strip" id="photoStrip">
+    <!-- Remplace les src par tes vrais fichiers dans files_services/ -->
+    <img src="files_services/01.jpg" alt="Theo Avif — Services">
+    <img src="files_services/02.jpg" alt="Theo Avif — Services">
+    <img src="files_services/03.jpg" alt="Theo Avif — Services">
+    <img src="files_services/04.jpg" alt="Theo Avif — Services">
+    <img src="files_services/05.jpg" alt="Theo Avif — Services">
+    <img src="files_services/06.jpg" alt="Theo Avif — Services">
+  </div>
+</div>
+
 <div class="contact-section">
   <a class="contact-btn" href="https://wa.me/33618254337?text=Hi%2C%20I%27d%20like%20to%20discuss%20a%20project%20with%20you." target="_blank">Get in touch</a>
+  <a href="gallery.html" class="intro-link" style="display:block; margin-top:1.5rem;">Discover my artistic work →</a>
 </div>
 
 <footer>
@@ -226,12 +310,34 @@
 </footer>
 
 <script>
-  // Vibration sur le titre toutes les 5 secondes
+  // Vibration titre
   const title = document.getElementById('servicesTitle');
   setInterval(() => {
     title.classList.add('vibrating');
     setTimeout(() => title.classList.remove('vibrating'), 500);
   }, 5000);
+
+  // Drag to scroll sur le strip photos
+  const strip = document.getElementById('photoStrip');
+  let isDown = false, startX, scrollLeft;
+
+  strip.addEventListener('mousedown', e => {
+    isDown = true;
+    startX = e.pageX - strip.offsetLeft;
+    scrollLeft = strip.scrollLeft;
+  });
+  strip.addEventListener('mouseleave', () => isDown = false);
+  strip.addEventListener('mouseup', () => isDown = false);
+  strip.addEventListener('mousemove', e => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - strip.offsetLeft;
+    strip.scrollLeft = scrollLeft - (x - startX) * 1.2;
+  });
+
+  document.addEventListener('contextmenu', e => {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
 </script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- services v6.0 -->
+<!-- services v7.0 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -18,7 +18,6 @@
     line-height: 1.5;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -41,11 +40,7 @@
     color: #fff;
   }
 
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
 
   .nav-links a {
     font-size: 12px;
@@ -58,7 +53,6 @@
 
   .nav-links a:hover { color: #fff; }
 
-  /* HERO */
   .hero {
     margin-top: 52px;
     padding: 5rem 2rem 3rem;
@@ -86,7 +80,6 @@
 
   .hero h1.vibrating { animation: vibrate 0.5s ease; }
 
-  /* INTRO */
   .intro {
     padding: 3rem 2rem;
     max-width: 600px;
@@ -108,7 +101,7 @@
     margin-bottom: 0;
   }
 
-  /* SERVICES + PHOTOS LAYOUT */
+  /* LAYOUT DEUX COLONNES */
   .services-block {
     display: flex;
     align-items: stretch;
@@ -153,23 +146,32 @@
     width: 300px;
     flex-shrink: 0;
     overflow: hidden;
-    position: relative;
+    position: relative; /* nécessaire pour le track absolu */
   }
 
+  /* Le track est hors du flux → ne pousse pas la colonne */
   .photo-track {
+    position: absolute;
+    top: 0; left: 0; right: 0;
     display: flex;
     flex-direction: column;
+    gap: 0;
   }
 
   .photo-track img {
     width: 100%;
-    flex-shrink: 0;
     display: block;
+    flex-shrink: 0;
     object-fit: cover;
     filter: brightness(0.88);
     -webkit-user-select: none;
     user-select: none;
     pointer-events: none;
+  }
+
+  @keyframes scroll-up {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
   }
 
   @media (max-width: 700px) {
@@ -196,20 +198,17 @@
     transition: all 0.2s;
   }
 
-  .contact-btn:hover {
-    background: #fff;
-    color: #111;
-    border-color: #fff;
-  }
+  .contact-btn:hover { background: #fff; color: #111; border-color: #fff; }
 
   .gallery-link {
-    display: inline-block;
+    display: block;
     margin-top: 1.5rem;
     font-size: 12px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #aaa;
     text-decoration: none;
+    width: fit-content;
     border-bottom: 1px solid #333;
     padding-bottom: 2px;
     transition: color 0.2s, border-color 0.2s;
@@ -217,7 +216,6 @@
 
   .gallery-link:hover { color: #fff; border-color: #fff; }
 
-  /* FOOTER */
   footer {
     padding: 2rem;
     display: flex;
@@ -229,13 +227,7 @@
 
   footer p { font-size: 11px; color: #444; letter-spacing: 0.05em; }
 
-  footer a {
-    font-size: 11px;
-    color: #444;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-  }
-
+  footer a { font-size: 11px; color: #444; text-decoration: none; letter-spacing: 0.05em; }
   footer a:hover { color: #fff; }
 </style>
 </head>
@@ -287,7 +279,6 @@
       <img src="files_services/04.jpg" alt="Theo Avif">
       <img src="files_services/05.jpg" alt="Theo Avif">
       <img src="files_services/06.jpg" alt="Theo Avif">
-      <!-- Copie pour boucle seamless -->
       <img src="files_services/01.jpg" alt="Theo Avif">
       <img src="files_services/02.jpg" alt="Theo Avif">
       <img src="files_services/03.jpg" alt="Theo Avif">
@@ -309,45 +300,37 @@
 </footer>
 
 <script>
-  // Vibration titre
   const title = document.getElementById('servicesTitle');
   setInterval(() => {
     title.classList.add('vibrating');
     setTimeout(() => title.classList.remove('vibrating'), 500);
   }, 5000);
 
-  // Ajuste la hauteur de chaque photo = hauteur exacte de la colonne
   function initScroll() {
     const col = document.getElementById('photoColumn');
     const track = document.getElementById('photoTrack');
     const imgs = track.querySelectorAll('img');
     const h = col.offsetHeight;
-    const n = imgs.length / 2; // nombre de photos uniques
 
-    imgs.forEach(img => {
-      img.style.height = h + 'px';
-    });
+    if (h === 0) { setTimeout(initScroll, 50); return; }
 
-    // Durée proportionnelle au nombre de photos (4s par photo)
-    const duration = n * 4;
-    track.style.animation = `scroll-up ${duration}s linear infinite`;
+    const n = imgs.length / 2;
+    imgs.forEach(img => { img.style.height = h + 'px'; });
+
+    // 5s par photo = rythme lent et élégant
+    track.style.animation = `scroll-up ${n * 5}s linear infinite`;
   }
 
-  // Attendre que les images soient chargées pour avoir la bonne hauteur
   window.addEventListener('load', initScroll);
-  window.addEventListener('resize', initScroll);
+  window.addEventListener('resize', () => {
+    const track = document.getElementById('photoTrack');
+    track.style.animation = 'none';
+    setTimeout(initScroll, 50);
+  });
 
   document.addEventListener('contextmenu', e => {
     if (e.target.tagName === 'IMG') e.preventDefault();
   });
 </script>
-
-<style>
-  @keyframes scroll-up {
-    0%   { transform: translateY(0); }
-    100% { transform: translateY(-50%); }
-  }
-</style>
-
 </body>
 </html>

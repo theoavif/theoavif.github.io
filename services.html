@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- services v4.0 -->
+<!-- services v5.0 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -127,10 +127,16 @@
     border-color: #fff;
   }
 
-  /* SERVICES LIST */
+  /* SERVICES + PHOTOS LAYOUT */
+  .services-block {
+    display: flex;
+    border-bottom: 1px solid #222;
+  }
+
   .services-list {
+    flex: 1;
     padding: 2rem;
-    max-width: 800px;
+    border-right: 1px solid #222;
   }
 
   .service-item {
@@ -141,6 +147,8 @@
     border-bottom: 1px solid #222;
     gap: 2rem;
   }
+
+  .service-item:last-child { border-bottom: none; }
 
   .service-title {
     font-size: 13px;
@@ -158,36 +166,31 @@
     text-align: right;
   }
 
-  /* PHOTO MARQUEE */
-  .photo-section {
-    border-top: 1px solid #222;
-    border-bottom: 1px solid #222;
+  /* PHOTO COLUMN — défilement vertical */
+  .photo-column {
+    width: 280px;
+    flex-shrink: 0;
     overflow: hidden;
-    height: 400px;
+    position: relative;
   }
 
-  @media (max-width: 600px) { .photo-section { height: 240px; } }
-
-  @keyframes marquee {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  @keyframes scroll-up {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
   }
 
   .photo-track {
     display: flex;
+    flex-direction: column;
     gap: 4px;
-    height: 100%;
-    width: max-content;
-    animation: marquee 35s linear infinite;
+    animation: scroll-up 30s linear infinite;
   }
 
-  .photo-track:hover {
-    animation-play-state: paused;
-  }
+  .photo-track:hover { animation-play-state: paused; }
 
   .photo-track img {
-    height: 100%;
-    width: auto;
+    width: 100%;
+    height: auto;
     display: block;
     flex-shrink: 0;
     filter: brightness(0.88);
@@ -198,10 +201,16 @@
     object-fit: cover;
   }
 
+  @media (max-width: 700px) {
+    .services-block { flex-direction: column; }
+    .services-list { border-right: none; border-bottom: 1px solid #222; }
+    .photo-column { width: 100%; height: 300px; }
+  }
+
   /* CONTACT */
   .contact-section {
     padding: 3rem 2rem;
-    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
   }
 
   .contact-btn {
@@ -268,41 +277,43 @@
   <p class="intro-meta">Available in French, Spanish and English.</p>
 </div>
 
-<div class="services-list">
-  <div class="service-item">
-    <div class="service-title">Event Photography</div>
-    <div class="service-desc">Capturing moments, energy and atmosphere.</div>
+<div class="services-block">
+  <div class="services-list">
+    <div class="service-item">
+      <div class="service-title">Event Photography</div>
+      <div class="service-desc">Capturing moments, energy and atmosphere.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-title">Art Direction</div>
+      <div class="service-desc">Visual concepts for projects, shoots and campaigns.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-title">Photography for Artists & Brands</div>
+      <div class="service-desc">Clean, intentional images that reflect your identity.</div>
+    </div>
+    <div class="service-item">
+      <div class="service-title">Visual Identity & Digital Presence</div>
+      <div class="service-desc">From concept to online presence.</div>
+    </div>
   </div>
-  <div class="service-item">
-    <div class="service-title">Art Direction</div>
-    <div class="service-desc">Visual concepts for projects, shoots and campaigns.</div>
-  </div>
-  <div class="service-item">
-    <div class="service-title">Photography for Artists & Brands</div>
-    <div class="service-desc">Clean, intentional images that reflect your identity.</div>
-  </div>
-  <div class="service-item">
-    <div class="service-title">Visual Identity & Digital Presence</div>
-    <div class="service-desc">From concept to online presence.</div>
-  </div>
-</div>
 
-<div class="photo-section">
-  <div class="photo-track">
-    <!-- Images en double pour la boucle seamless -->
-    <img src="files_services/01.jpg" alt="Theo Avif — Services">
-    <img src="files_services/02.jpg" alt="Theo Avif — Services">
-    <img src="files_services/03.jpg" alt="Theo Avif — Services">
-    <img src="files_services/04.jpg" alt="Theo Avif — Services">
-    <img src="files_services/05.jpg" alt="Theo Avif — Services">
-    <img src="files_services/06.jpg" alt="Theo Avif — Services">
-    <!-- Copie pour boucle infinie -->
-    <img src="files_services/01.jpg" alt="Theo Avif — Services">
-    <img src="files_services/02.jpg" alt="Theo Avif — Services">
-    <img src="files_services/03.jpg" alt="Theo Avif — Services">
-    <img src="files_services/04.jpg" alt="Theo Avif — Services">
-    <img src="files_services/05.jpg" alt="Theo Avif — Services">
-    <img src="files_services/06.jpg" alt="Theo Avif — Services">
+  <div class="photo-column">
+    <div class="photo-track">
+      <!-- Remplace avec tes vrais fichiers dans files_services/ -->
+      <img src="files_services/01.jpg" alt="Theo Avif">
+      <img src="files_services/02.jpg" alt="Theo Avif">
+      <img src="files_services/03.jpg" alt="Theo Avif">
+      <img src="files_services/04.jpg" alt="Theo Avif">
+      <img src="files_services/05.jpg" alt="Theo Avif">
+      <img src="files_services/06.jpg" alt="Theo Avif">
+      <!-- Copie pour boucle seamless -->
+      <img src="files_services/01.jpg" alt="Theo Avif">
+      <img src="files_services/02.jpg" alt="Theo Avif">
+      <img src="files_services/03.jpg" alt="Theo Avif">
+      <img src="files_services/04.jpg" alt="Theo Avif">
+      <img src="files_services/05.jpg" alt="Theo Avif">
+      <img src="files_services/06.jpg" alt="Theo Avif">
+    </div>
   </div>
 </div>
 

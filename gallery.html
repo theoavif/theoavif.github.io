@@ -1,16 +1,56 @@
 <!DOCTYPE html>
-<!-- v6.1 -->
+<!-- v6.2 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Theo Avif — Artiste | Peinture, Collage & Photographie Argentique | Barcelona</title>
 <meta name="description" content="Theo Avif est un artiste français basé à Barcelona. Peinture, collage et photographie argentique. Galerie d'art contemporain, expositions et tirages fine art disponibles.">
-<meta name="keywords" content="Theo Avif, artiste français, Barcelona, Dijon, collage, peinture, photographie argentique, art contemporain, galerie, KYDZ, painter, peintre, exhibition, exposition, tirage fine art, mixed media">
-<meta property="og:title" content="Theo Avif — Artiste | Barcelona">
-<meta property="og:description" content="Artiste français basé à Barcelona. Peinture, collage et photographie argentique. Art contemporain.">
-<meta property="og:url" content="https://theoavif.com">
+<meta name="keywords" content="Theo Avif, artiste français, Barcelona, Dijon, collage, peinture, photographie argentique, art contemporain, galerie, KYDZ, painter, peintre, exhibition, exposition, tirage fine art, mixed media, analogue photography artist">
+<meta name="author" content="Theo Avif">
+<link rel="canonical" href="https://theoavif.com/gallery.html">
+
+<!-- Open Graph -->
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://theoavif.com/gallery.html">
+<meta property="og:title" content="Theo Avif — Artiste | Peinture, Collage & Photographie | Barcelona">
+<meta property="og:description" content="Artiste français basé à Barcelona. Peinture, collage et photographie argentique. Art contemporain, expositions et tirages fine art.">
+<meta property="og:site_name" content="Theo Avif">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Theo Avif — Artiste | Barcelona">
+<meta name="twitter:description" content="Artiste français basé à Barcelona. Peinture, collage et photographie argentique.">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VisualArtist",
+  "name": "Theo Avif",
+  "url": "https://theoavif.com/gallery.html",
+  "nationality": "French",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Barcelona",
+    "addressCountry": "ES"
+  },
+  "sameAs": ["https://instagram.com/theo.avif"],
+  "description": "French artist based in Barcelona. Works across analogue photography, collage and painting.",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Fine Art Prints & Originals",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "VisualArtwork", "name": "¿A Dónde Vas?" } },
+      { "@type": "Offer", "itemOffered": { "@type": "VisualArtwork", "name": "Personal Diaries" } },
+      { "@type": "Offer", "itemOffered": { "@type": "VisualArtwork", "name": "Concrete Flowers" } },
+      { "@type": "Offer", "itemOffered": { "@type": "VisualArtwork", "name": "KYDZ" } },
+      { "@type": "Offer", "itemOffered": { "@type": "VisualArtwork", "name": "Atracción" } }
+    ]
+  }
+}
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -237,12 +277,9 @@
     border-color: var(--black);
   }
 
-  /* HIDDEN items */
   .gallery-item.hidden { display: none; }
 
   /* SERIES */
-  .series-section { }
-
   .series-block {
     padding: 2.5rem 2rem 1.5rem;
     border-bottom: 1px solid var(--border);
@@ -277,7 +314,7 @@
     gap: 1rem;
   }
 
-    @media (max-width: 900px) { .series-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 900px) { .series-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 500px) { .series-grid { grid-template-columns: 1fr; } }
 
   /* LIGHTBOX */
@@ -307,10 +344,7 @@
     .lightbox-inner { grid-template-columns: 1fr; }
   }
 
-  .lightbox-img {
-    width: 100%;
-    display: block;
-  }
+  .lightbox-img { width: 100%; display: block; }
 
   .lightbox-close {
     position: fixed;
@@ -387,11 +421,7 @@
     margin-top: 4rem;
   }
 
-  footer p {
-    font-size: 11px;
-    color: var(--gray);
-    letter-spacing: 0.05em;
-  }
+  footer p { font-size: 11px; color: var(--gray); letter-spacing: 0.05em; }
 
   footer a {
     font-size: 11px;
@@ -430,7 +460,7 @@
     pointer-events: none;
     text-shadow: 0 1px 2px rgba(0,0,0,0.2);
   }
-  /* SCROLL TO TOP */
+
   #scrollTop {
     position: fixed;
     bottom: 1.5rem;
@@ -450,207 +480,6 @@
   }
 
   #scrollTop:hover { background: rgba(0, 0, 0, 0.7); }
-
-  /* LANDING PAGE */
-  #landing {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    z-index: 10;
-  }
-
-  .landing-side {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: flex 0.5s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .landing-side:hover { flex: 1.15; }
-
-  .landing-left {
-    background: #111;
-  }
-
-  .landing-right {
-    background: #fff;
-    border-left: 1px solid #e8e8e8;
-  }
-
-  .landing-label {
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(1.5rem, 4vw, 3rem);
-    font-weight: 200;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-
-  .landing-left .landing-label { color: #fff; }
-  .landing-right .landing-label { color: #111; }
-
-  .landing-sub {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 0.5rem;
-    opacity: 0.5;
-  }
-
-  .landing-left .landing-sub { color: #fff; }
-  .landing-right .landing-sub { color: #111; }
-
-  .landing-content {
-    text-align: center;
-  }
-
-  /* SERVICES SECTION */
-  #servicesSection {
-    display: none;
-    background: #111;
-    color: #fff;
-    min-height: 100vh;
-    position: relative;
-    z-index: 10;
-  }
-
-  .services-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem 2rem;
-    border-bottom: 1px solid #222;
-  }
-
-  .services-nav-logo {
-    font-family: 'Outfit', sans-serif;
-    font-size: 13px;
-    font-weight: 200;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .services-nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .services-nav-links a {
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #888;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .services-nav-links a:hover { color: #fff; }
-
-  .services-hero {
-    padding: 5rem 2rem 3rem;
-    border-bottom: 1px solid #222;
-  }
-
-  .services-hero h1 {
-    font-family: 'Outfit', sans-serif;
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 200;
-    letter-spacing: 0.15em;
-    color: #fff;
-  }
-
-  .services-intro {
-    padding: 3rem 2rem;
-    max-width: 600px;
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.9;
-    color: #aaa;
-    border-bottom: 1px solid #222;
-  }
-
-  .services-list {
-    padding: 3rem 2rem;
-    max-width: 800px;
-  }
-
-  .service-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid #222;
-  }
-
-  .service-title {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #fff;
-  }
-
-  .service-desc {
-    font-size: 12px;
-    color: #666;
-    letter-spacing: 0.05em;
-    text-align: right;
-    max-width: 300px;
-  }
-
-  .services-contact {
-    padding: 3rem 2rem;
-    border-top: 1px solid #222;
-  }
-
-  .services-contact-btn {
-    display: inline-block;
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #fff;
-    border: 1px solid #444;
-    padding: 0.75rem 2rem;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-
-  .services-contact-btn:hover {
-    background: #fff;
-    color: #111;
-    border-color: #fff;
-  }
-
-  .services-footer {
-    padding: 2rem;
-    border-top: 1px solid #222;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .services-footer p {
-    font-size: 11px;
-    color: #444;
-    letter-spacing: 0.05em;
-  }
-
-  .services-footer a {
-    font-size: 11px;
-    color: #444;
-    text-decoration: none;
-    letter-spacing: 0.05em;
-  }
-
-  .services-footer a:hover { color: #fff; }
-
 </style>
 </head>
 <body>
@@ -687,97 +516,86 @@
         <span class="series-year">2025</span>
       </div>
       <div class="series-grid">
-
         <div class="gallery-item" data-title="¿A Dónde Vas? #01" data-desc="Analogue photography · 50×70cm · Matt paper · Format A0 · 2025" data-price="200 €" data-available="true">
-          <img src="files_photos/adv/adv_01.jpg" alt="¿A Dónde Vas? #01">
+          <img src="files_photos/adv/adv_01.jpg" alt="¿A Dónde Vas? #01 — Analogue photography · 50×70cm · Matt paper · Format A0 · 2025 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">¿A Dónde Vas? #01</div>
             <div class="gallery-item-format">Format A0</div>
             <div class="gallery-item-price">200 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="¿A Dónde Vas? #02" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2025" data-price="150 €" data-available="false">
-          <img src="files_photos/adv/adv_02.jpg" alt="¿A Dónde Vas? #02">
+          <img src="files_photos/adv/adv_02.jpg" alt="¿A Dónde Vas? #02 — Analogue photography · Barcelona · 2025 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">¿A Dónde Vas? #02</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price" style="color:#888;">150 € — <span style="color:#e00; text-transform:uppercase; letter-spacing:0.05em;">Sold</span></div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="¿A Dónde Vas? #03" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2026" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_03.jpg" alt="¿A Dónde Vas? #03">
+          <img src="files_photos/adv/adv_03.jpg" alt="¿A Dónde Vas? #03 — Analogue photography · Barcelona · 2026 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">¿A Dónde Vas? #03</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="¿A Dónde Vas? #04" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_04.jpg" alt="¿A Dónde Vas? #04">
+          <img src="files_photos/adv/adv_04.jpg" alt="¿A Dónde Vas? #04 — Analogue photography · Barcelona · 2025 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">¿A Dónde Vas? #04</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="¿A Dónde Vas? #05" data-desc="Analogue photography · 50×70cm · Matt paper · Lanzarote · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_05.jpg" alt="¿A Dónde Vas? #05">
+          <img src="files_photos/adv/adv_05.jpg" alt="¿A Dónde Vas? #05 — Analogue photography · Lanzarote · 2025 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">¿A Dónde Vas? #05</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="¿A Dónde Vas? #06" data-desc="Analogue photography · 50×70cm · Matt paper · Lanzarote · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_06.jpg" alt="¿A Dónde Vas? #06">
+          <img src="files_photos/adv/adv_06.jpg" alt="¿A Dónde Vas? #06 — Analogue photography · Lanzarote · 2025 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">¿A Dónde Vas? #06</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="¿A Dónde Vas? #07" data-desc="Analogue photography · 50×70cm · Matt paper · Lanzarote · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_07.jpg" alt="¿A Dónde Vas? #07">
+          <img src="files_photos/adv/adv_07.jpg" alt="¿A Dónde Vas? #07 — Analogue photography · Lanzarote · 2025 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">¿A Dónde Vas? #07</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="¿A Dónde Vas? #09" data-desc="Analogue photography · 50×70cm · Matt paper · Ibiza · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_09.jpg" alt="¿A Dónde Vas? #09">
+          <img src="files_photos/adv/adv_09.jpg" alt="¿A Dónde Vas? #09 — Analogue photography · Ibiza · 2025 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">¿A Dónde Vas? #09</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="¿A Dónde Vas? #10" data-desc="Analogue photography · 50×70cm · Matt paper · Ibiza · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_10.jpg" alt="¿A Dónde Vas? #10">
+          <img src="files_photos/adv/adv_10.jpg" alt="¿A Dónde Vas? #10 — Analogue photography · Ibiza · 2025 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">¿A Dónde Vas? #10</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="¿A Dónde Vas? #11" data-desc="Analogue photography · 50×70cm · Matt paper · Ibiza · 2025" data-price="150 €" data-available="true">
-          <img src="files_photos/adv/adv_11.jpg" alt="¿A Dónde Vas? #11">
+          <img src="files_photos/adv/adv_11.jpg" alt="¿A Dónde Vas? #11 — Analogue photography · Ibiza · 2025 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">¿A Dónde Vas? #11</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -787,52 +605,46 @@
         <span class="series-year">2024</span>
       </div>
       <div class="series-grid">
-
         <div class="gallery-item" data-title="Personal Diaries #01" data-desc="Analogue photography · 50×70cm · Matt paper · Belgrade · 2024" data-price="100 €" data-available="false">
-          <img src="files_photos/pd/pd_01.jpg" alt="Personal Diaries #01">
+          <img src="files_photos/pd/pd_01.jpg" alt="Personal Diaries #01 — Analogue photography · Belgrade · 2024 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Personal Diaries #01</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price" style="color:#888;">100 € — <span style="color:#e00; text-transform:uppercase; letter-spacing:0.05em;">Sold</span></div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Personal Diaries #02" data-desc="Analogue photography · 50×70cm · Matt paper · Marrakech · 2024" data-price="100 €" data-available="true">
-          <img src="files_photos/pd/pd_02.jpg" alt="Personal Diaries #02">
+          <img src="files_photos/pd/pd_02.jpg" alt="Personal Diaries #02 — Analogue photography · Marrakech · 2024 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Personal Diaries #02</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">100 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Personal Diaries #03" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2024" data-price="100 €" data-available="true">
-          <img src="files_photos/pd/pd_03.jpg" alt="Personal Diaries #03">
+          <img src="files_photos/pd/pd_03.jpg" alt="Personal Diaries #03 — Analogue photography · Barcelona · 2024 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Personal Diaries #03</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">100 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Personal Diaries #04" data-desc="Analogue photography · 50×70cm · Matt paper · Bacalar · 2024" data-price="100 €" data-available="true">
-          <img src="files_photos/pd/pd_04.jpg" alt="Personal Diaries #04">
+          <img src="files_photos/pd/pd_04.jpg" alt="Personal Diaries #04 — Analogue photography · Bacalar · 2024 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Personal Diaries #04</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">100 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Personal Diaries #05" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2024" data-price="100 €" data-available="false">
-          <img src="files_photos/pd/pd_05.jpg" alt="Personal Diaries #05">
+          <img src="files_photos/pd/pd_05.jpg" alt="Personal Diaries #05 — Analogue photography · Barcelona · 2024 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Personal Diaries #05</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price" style="color:#888;">100 € — <span style="color:#e00; text-transform:uppercase; letter-spacing:0.05em;">Sold</span></div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -842,110 +654,100 @@
         <span class="series-year">2022</span>
       </div>
       <div class="series-grid">
-
         <div class="gallery-item" data-title="Concrete Flowers #01" data-desc="Analogue photography · 50×70cm · Matt paper · Paris · 2022" data-price="200 €" data-available="true">
-          <img src="files_photos/flowers/cf_01.jpg" alt="Concrete Flowers #01">
+          <img src="files_photos/flowers/cf_01.jpg" alt="Concrete Flowers #01 — Analogue photography · Paris · 2022 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Concrete Flowers #01</div>
             <div class="gallery-item-format">Format A0</div>
             <div class="gallery-item-price">200 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Concrete Flowers #02" data-desc="Analogue photography · 50×70cm · Matt paper · Paris · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_02.jpg" alt="Concrete Flowers #02">
+          <img src="files_photos/flowers/cf_02.jpg" alt="Concrete Flowers #02 — Analogue photography · Paris · 2022 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Concrete Flowers #02</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">100 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Concrete Flowers #03" data-desc="Analogue photography · 50×70cm · Matt paper · Paris · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_03.jpg" alt="Concrete Flowers #03">
+          <img src="files_photos/flowers/cf_03.jpg" alt="Concrete Flowers #03 — Analogue photography · Paris · 2022 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Concrete Flowers #03</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">100 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Concrete Flowers #04" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_04.jpg" alt="Concrete Flowers #04">
+          <img src="files_photos/flowers/cf_04.jpg" alt="Concrete Flowers #04 — Analogue photography · Barcelona · 2022 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Concrete Flowers #04</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">100 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Concrete Flowers #05" data-desc="Analogue photography · 50×70cm · Matt paper · Marseille · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_05.jpg" alt="Concrete Flowers #05">
+          <img src="files_photos/flowers/cf_05.jpg" alt="Concrete Flowers #05 — Analogue photography · Marseille · 2022 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Concrete Flowers #05</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">100 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Concrete Flowers #06" data-desc="Analogue photography · 50×70cm · Matt paper · Marseille · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_06.jpg" alt="Concrete Flowers #06">
+          <img src="files_photos/flowers/cf_06.jpg" alt="Concrete Flowers #06 — Analogue photography · Marseille · 2022 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Concrete Flowers #06</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">100 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Concrete Flowers #07" data-desc="Analogue photography · 50×70cm · Matt paper · Paris · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_07.jpg" alt="Concrete Flowers #07">
+          <img src="files_photos/flowers/cf_07.jpg" alt="Concrete Flowers #07 — Analogue photography · Paris · 2022 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Concrete Flowers #07</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">100 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Concrete Flowers #08" data-desc="Analogue photography · 50×70cm · Matt paper · Paris · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_08.jpg" alt="Concrete Flowers #08">
+          <img src="files_photos/flowers/cf_08.jpg" alt="Concrete Flowers #08 — Analogue photography · Paris · 2022 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Concrete Flowers #08</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">100 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Concrete Flowers #09" data-desc="Analogue photography · 50×70cm · Matt paper · Paris · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_09.jpg" alt="Concrete Flowers #09">
+          <img src="files_photos/flowers/cf_09.jpg" alt="Concrete Flowers #09 — Analogue photography · Paris · 2022 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Concrete Flowers #09</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">100 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Concrete Flowers #12" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_12.jpg" alt="Concrete Flowers #12">
+          <img src="files_photos/flowers/cf_12.jpg" alt="Concrete Flowers #12 — Analogue photography · Barcelona · 2022 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Concrete Flowers #12</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">100 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Concrete Flowers #13" data-desc="Analogue photography · 50×70cm · Matt paper · Barcelona · 2022" data-price="100 €" data-available="true">
-          <img src="files_photos/flowers/cf_13.jpg" alt="Concrete Flowers #13">
+          <img src="files_photos/flowers/cf_13.jpg" alt="Concrete Flowers #13 — Analogue photography · Barcelona · 2022 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Concrete Flowers #13</div>
             <div class="gallery-item-format">50×70cm</div>
             <div class="gallery-item-price">100 €</div>
           </div>
         </div>
-
       </div>
     </div>
 
   </div>
+
+  <!-- COLLAGE SECTION -->
   <div class="series-section" data-cat="collage" style="display:none;">
 
     <div class="series-block">
@@ -954,88 +756,78 @@
         <span class="series-year">2026</span>
       </div>
       <div class="series-grid">
-
         <div class="gallery-item" data-title="OUTSIDERZ" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="false">
-          <img src="files_collages/kydz_outsiderz.jpg" alt="OUTSIDERZ">
+          <img src="files_collages/kydz_outsiderz.jpg" alt="OUTSIDERZ — Collage Mixed media · 40×40cm · 2026 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">OUTSIDERZ</div>
             <div class="gallery-item-format">40×40cm</div>
             <div class="gallery-item-price" style="color:#888;">150 € — <span style="color:#e00; text-transform:uppercase; letter-spacing:0.05em;">Sold</span></div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="TRUE LIES" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_truelies.jpg" alt="TRUE LIES">
+          <img src="files_collages/kydz_truelies.jpg" alt="TRUE LIES — Collage Mixed media · 40×40cm · 2026 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">TRUE LIES</div>
             <div class="gallery-item-format">40×40cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="UNDERGROUNDERZ" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_undergrounderz.jpg" alt="UNDERGROUNDERZ">
+          <img src="files_collages/kydz_undergrounderz.jpg" alt="UNDERGROUNDERZ — Collage Mixed media · 40×40cm · 2026 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">UNDERGROUNDERZ</div>
             <div class="gallery-item-format">40×40cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="K" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_k.jpg" alt="K">
+          <img src="files_collages/kydz_k.jpg" alt="K — Collage Mixed media · 40×40cm · 2026 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">K</div>
             <div class="gallery-item-format">40×40cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="FROM EARTH" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_fromearth.jpg" alt="FROM EARTH">
+          <img src="files_collages/kydz_fromearth.jpg" alt="FROM EARTH — Collage Mixed media · 40×40cm · 2026 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">FROM EARTH</div>
             <div class="gallery-item-format">40×40cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="LOST IN PARADIZ" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_lostinparadiz.jpg" alt="LOST IN PARADIZ">
+          <img src="files_collages/kydz_lostinparadiz.jpg" alt="LOST IN PARADIZ — Collage Mixed media · 40×40cm · 2026 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">LOST IN PARADIZ</div>
             <div class="gallery-item-format">40×40cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="PLAYGIRLZ" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_playgirlz.jpg" alt="PLAYGIRLZ">
+          <img src="files_collages/kydz_playgirlz.jpg" alt="PLAYGIRLZ — Collage Mixed media · 40×40cm · 2026 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">PLAYGIRLZ</div>
             <div class="gallery-item-format">40×40cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="CASH MONEY" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_cashmoney.jpg" alt="CASH MONEY">
+          <img src="files_collages/kydz_cashmoney.jpg" alt="CASH MONEY — Collage Mixed media · 40×40cm · 2026 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">CASH MONEY</div>
             <div class="gallery-item-format">40×40cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Z" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true">
-          <img src="files_collages/kydz_z.jpg" alt="Z">
+          <img src="files_collages/kydz_z.jpg" alt="Z — Collage Mixed media · 40×40cm · 2026 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Z</div>
             <div class="gallery-item-format">40×40cm</div>
             <div class="gallery-item-price">150 €</div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -1045,34 +837,30 @@
         <span class="series-year">2024</span>
       </div>
       <div class="series-grid">
-
         <div class="gallery-item" data-title="LE TEMPS" data-desc="Collage · Mixed media · 30×30cm · 2024" data-price="90 €" data-available="true">
-          <img src="files_collages/pd_letemps.jpg" alt="LE TEMPS">
+          <img src="files_collages/pd_letemps.jpg" alt="LE TEMPS — Collage Mixed media · 30×30cm · 2024 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">LE TEMPS</div>
             <div class="gallery-item-format">40×40cm</div>
             <div class="gallery-item-price">90 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="WALKERZ" data-desc="Collage · Mixed media · 30×30cm · 2024" data-price="90 €" data-available="true">
-          <img src="files_collages/pd_walkerz.jpg" alt="WALKERZ">
+          <img src="files_collages/pd_walkerz.jpg" alt="WALKERZ — Collage Mixed media · 30×30cm · 2024 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">WALKERZ</div>
             <div class="gallery-item-format">30×30cm</div>
             <div class="gallery-item-price">90 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="FAST TRACK" data-desc="Collage · Mixed media · 30×30cm · 2024" data-price="90 €" data-available="true">
-          <img src="files_collages/pd_fasttrack.jpg" alt="FAST TRACK">
+          <img src="files_collages/pd_fasttrack.jpg" alt="FAST TRACK — Collage Mixed media · 30×30cm · 2024 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">FAST TRACK</div>
             <div class="gallery-item-format">30×30cm</div>
             <div class="gallery-item-price">90 €</div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -1087,34 +875,30 @@
         <span class="series-year">2021 — 2026</span>
       </div>
       <div class="series-grid">
-
         <div class="gallery-item" data-title="Atracción #01" data-desc="Painting · Acrylic on canvas · 100×100cm · 2021" data-price="400 €" data-available="true">
-          <img src="files_peintures/atr_01.png" alt="Atracción #01">
+          <img src="files_peintures/atr_01.png" alt="Atracción #01 — Painting Acrylic on canvas · 100×100cm · 2021 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Atracción #01</div>
             <div class="gallery-item-format">100×100cm</div>
             <div class="gallery-item-price">400 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Atracción #02" data-desc="Painting · Acrylic on canvas · 100×100cm · 2026" data-price="450 €" data-available="true">
-          <img src="files_peintures/atr_02.png" alt="Atracción #02">
+          <img src="files_peintures/atr_02.png" alt="Atracción #02 — Painting Acrylic on canvas · 100×100cm · 2026 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Atracción #02</div>
             <div class="gallery-item-format">100×100cm</div>
             <div class="gallery-item-price">450 €</div>
           </div>
         </div>
-
         <div class="gallery-item" data-title="Atracción #03" data-desc="Painting · Acrylic on canvas · 120×120cm · 2026" data-price="850 €" data-available="true">
-          <img src="files_peintures/atr_03.png" alt="Atracción #03">
+          <img src="files_peintures/atr_03.png" alt="Atracción #03 — Painting Acrylic on canvas · 120×120cm · 2026 — Theo Avif">
           <div class="gallery-item-info">
             <div class="gallery-item-title">Atracción #03</div>
             <div class="gallery-item-format">120×120cm</div>
             <div class="gallery-item-price">850 €</div>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -1124,18 +908,13 @@
 
 <!-- ABOUT -->
 <div id="aboutSection" style="display:none; padding: 4rem 2rem;">
-
   <p style="font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#888; margin-bottom:2rem;">About</p>
-
   <div style="max-width:640px;">
-    
     <p style="font-size:1.05rem; font-weight:300; line-height:1.9; margin-bottom:3rem; color:#111;">
       French artist born in Dijon, based in Barcelona for over eight years. Theo Avif works across analogue photography, collage and painting to explore memory, identity and our relationship to the real in an increasingly digital world.<br><br>
       Since 2022, he has developed a series of projects blending exhibition and experience — from fine art architecture photography to mixed media collage and acrylic painting. Each work is available as an original piece or limited fine art print.
     </p>
-
     <p style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#888; margin-bottom:1.5rem;">Exhibitions</p>
-
     <table style="width:100%; border-collapse:collapse; font-size:12px;">
       <tr style="border-top:1px solid #e8e8e8;">
         <td style="padding:0.8rem 0; font-weight:500; letter-spacing:0.05em;">KYDZ</td>
@@ -1163,14 +942,11 @@
         <td style="padding:0.8rem 0; color:#888; text-align:right;">February 2022</td>
       </tr>
     </table>
-
     <div style="margin-top:3rem; display:flex; gap:2rem;">
       <a href="https://instagram.com/theo.avif" target="_blank" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:#111; text-decoration:none;">Instagram ↗</a>
       <a href="mailto:theoavif@gmail.com" style="font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:#111; text-decoration:none;">Email ↗</a>
     </div>
-
   </div>
-
 </div>
 
 <!-- LIGHTBOX -->
@@ -1220,7 +996,6 @@
     });
   });
 
-  // Init - cache tout puis affiche peinture
   sections.forEach(s => s.style.display = 'none');
   document.querySelector('.series-section[data-cat="peinture"]').style.display = 'block';
 
@@ -1284,20 +1059,13 @@
       info.appendChild(btn);
     }
   });
+
   // VIBRATION TITRE
   const heroTitle = document.querySelector('.hero h1');
   setInterval(() => {
     heroTitle.classList.add('vibrating');
     setTimeout(() => heroTitle.classList.remove('vibrating'), 500);
   }, 5000);
-
-  // SEO - ENRICHIR LES ALT TAGS
-  document.querySelectorAll('.gallery-item').forEach(item => {
-    const img = item.querySelector('img');
-    if (img && item.dataset.desc) {
-      img.alt = `${item.dataset.title} — ${item.dataset.desc} — Theo Avif`;
-    }
-  });
 
   // SCROLL TO TOP
   const scrollBtn = document.getElementById('scrollTop');
@@ -1314,11 +1082,6 @@
 
   document.addEventListener('dragstart', e => {
     if (e.target.tagName === 'IMG') e.preventDefault();
-  });
-
-  document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('dragstart', e => e.preventDefault());
-    img.addEventListener('contextmenu', e => e.preventDefault());
   });
 </script>
 </body>

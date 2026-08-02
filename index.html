@@ -1,11 +1,50 @@
 <!DOCTYPE html>
-<!-- landing v1.0 -->
+<!-- landing v2.0 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Theo Avif</title>
-<meta name="description" content="Theo Avif — French artist based in Barcelona. Gallery and Services.">
+
+<title>Theo Avif — Photographer & Artist | Barcelona</title>
+<meta name="description" content="Theo Avif — French photographer and artist based in Barcelona. Event photography, art direction, analogue photography, painting and collage. Available in French, Spanish and English.">
+<meta name="keywords" content="Theo Avif, photographer Barcelona, art director Barcelona, event photography Barcelona, analogue photography, photographe Barcelone, directeur artistique, French photographer Spain">
+<meta name="author" content="Theo Avif">
+<link rel="canonical" href="https://theoavif.com/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theoavif.com/">
+<meta property="og:title" content="Theo Avif — Photographer & Artist | Barcelona">
+<meta property="og:description" content="French photographer and artist based in Barcelona. Event photography, art direction, analogue photography, painting and collage.">
+<meta property="og:site_name" content="Theo Avif">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Theo Avif — Photographer & Artist | Barcelona">
+<meta name="twitter:description" content="French photographer and artist based in Barcelona. Event photography, art direction, analogue photography, painting and collage.">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Theo Avif",
+  "url": "https://theoavif.com",
+  "jobTitle": "Photographer & Art Director",
+  "nationality": "French",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Barcelona",
+    "addressCountry": "ES"
+  },
+  "sameAs": [
+    "https://instagram.com/theo.avif"
+  ],
+  "knowsLanguage": ["French", "Spanish", "English"],
+  "description": "French photographer and artist based in Barcelona. Works across digital and analogue photography, video, painting and collage."
+}
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -40,9 +79,7 @@
 
   .side:hover { flex: 1.2; }
 
-  .side-left {
-    background: #111;
-  }
+  .side-left { background: #111; }
 
   .side-right {
     background: #fff;
@@ -57,9 +94,7 @@
     transition: letter-spacing 0.4s ease;
   }
 
-  .side:hover .side-label {
-    letter-spacing: 0.3em;
-  }
+  .side:hover .side-label { letter-spacing: 0.3em; }
 
   .side-left .side-label { color: #fff; }
   .side-right .side-label { color: #111; }
@@ -87,7 +122,6 @@
     pointer-events: none;
   }
 
-  /* VIBRATION sur les labels */
   @keyframes vibrate {
     0%   { transform: translateX(0); }
     15%  { transform: translateX(-3px); }
@@ -99,11 +133,8 @@
     100% { transform: translateX(0); }
   }
 
-  .side-label.vibrating {
-    animation: vibrate 0.5s ease;
-  }
+  .side-label.vibrating { animation: vibrate 0.5s ease; }
 
-  /* FOOTER */
   .landing-footer {
     position: fixed;
     bottom: 1.5rem;
@@ -117,7 +148,6 @@
     pointer-events: none;
   }
 
-  /* MOBILE */
   @media (max-width: 600px) {
     .side-label { font-size: 1.8rem; }
   }
@@ -141,7 +171,6 @@
 <div class="landing-footer">Theo Avif — Barcelona</div>
 
 <script>
-  // Vibration toutes les 5 secondes sur les deux labels
   const labels = [
     document.getElementById('labelServices'),
     document.getElementById('labelGallery')

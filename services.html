@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- services v9.0 -->
+<!-- services v10.0 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -101,16 +101,9 @@
     margin-bottom: 0;
   }
 
-  .services-block {
-    display: flex;
-    align-items: stretch;
-    border-bottom: 1px solid #222;
-  }
-
   .services-list {
-    flex: 1;
     padding: 2rem;
-    border-right: 1px solid #222;
+    max-width: 800px;
   }
 
   .service-item {
@@ -121,8 +114,6 @@
     border-bottom: 1px solid #222;
     gap: 2rem;
   }
-
-  .service-item:last-child { border-bottom: none; }
 
   .service-title {
     font-size: 13px;
@@ -140,46 +131,9 @@
     text-align: right;
   }
 
-  /* PHOTO COLUMN — largeur fixe portrait */
-  .photo-column {
-    width: 220px;
-    flex-shrink: 0;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .photo-track {
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .photo-track img {
-    width: 100%;
-    display: block;
-    flex-shrink: 0;
-    object-fit: cover;
-    filter: brightness(0.88);
-    -webkit-user-select: none;
-    user-select: none;
-    pointer-events: none;
-  }
-
-  @keyframes scroll-up {
-    0%   { transform: translateY(0); }
-    100% { transform: translateY(-50%); }
-  }
-
-  @media (max-width: 700px) {
-    .services-block { flex-direction: column; }
-    .services-list { border-right: none; border-bottom: 1px solid #222; }
-    .photo-column { width: 100%; height: 280px; }
-  }
-
   .contact-section {
     padding: 3rem 2rem;
-    border-bottom: 1px solid #222;
+    border-top: 1px solid #222;
   }
 
   .contact-btn {
@@ -246,41 +200,22 @@
   <p class="intro-meta">Available in French, Spanish and English.</p>
 </div>
 
-<div class="services-block">
-  <div class="services-list">
-    <div class="service-item">
-      <div class="service-title">Event Photography</div>
-      <div class="service-desc">Capturing moments, energy and atmosphere.</div>
-    </div>
-    <div class="service-item">
-      <div class="service-title">Art Direction</div>
-      <div class="service-desc">Visual concepts for projects, shoots and campaigns.</div>
-    </div>
-    <div class="service-item">
-      <div class="service-title">Photography for Artists & Brands</div>
-      <div class="service-desc">Clean, intentional images that reflect your identity.</div>
-    </div>
-    <div class="service-item">
-      <div class="service-title">Visual Identity & Digital Presence</div>
-      <div class="service-desc">From concept to online presence.</div>
-    </div>
+<div class="services-list">
+  <div class="service-item">
+    <div class="service-title">Event Photography</div>
+    <div class="service-desc">Capturing moments, energy and atmosphere.</div>
   </div>
-
-  <div class="photo-column" id="photoColumn">
-    <div class="photo-track" id="photoTrack">
-      <img src="files_services/01.jpg" alt="Theo Avif">
-      <img src="files_services/02.jpg" alt="Theo Avif">
-      <img src="files_services/03.jpg" alt="Theo Avif">
-      <img src="files_services/04.jpg" alt="Theo Avif">
-      <img src="files_services/05.jpg" alt="Theo Avif">
-      <img src="files_services/06.jpg" alt="Theo Avif">
-      <img src="files_services/01.jpg" alt="Theo Avif">
-      <img src="files_services/02.jpg" alt="Theo Avif">
-      <img src="files_services/03.jpg" alt="Theo Avif">
-      <img src="files_services/04.jpg" alt="Theo Avif">
-      <img src="files_services/05.jpg" alt="Theo Avif">
-      <img src="files_services/06.jpg" alt="Theo Avif">
-    </div>
+  <div class="service-item">
+    <div class="service-title">Art Direction</div>
+    <div class="service-desc">Visual concepts for projects, shoots and campaigns.</div>
+  </div>
+  <div class="service-item">
+    <div class="service-title">Photography for Artists & Brands</div>
+    <div class="service-desc">Clean, intentional images that reflect your identity.</div>
+  </div>
+  <div class="service-item">
+    <div class="service-title">Visual Identity & Digital Presence</div>
+    <div class="service-desc">From concept to online presence.</div>
   </div>
 </div>
 
@@ -300,30 +235,6 @@
     title.classList.add('vibrating');
     setTimeout(() => title.classList.remove('vibrating'), 500);
   }, 5000);
-
-  function initScroll() {
-    const col = document.getElementById('photoColumn');
-    const track = document.getElementById('photoTrack');
-    const imgs = track.querySelectorAll('img');
-    const h = col.offsetHeight;
-
-    if (h === 0) { setTimeout(initScroll, 50); return; }
-
-    const n = imgs.length / 2;
-    imgs.forEach(img => { img.style.height = h + 'px'; });
-    track.style.animation = `scroll-up ${n * 5}s linear infinite`;
-  }
-
-  window.addEventListener('load', initScroll);
-  window.addEventListener('resize', () => {
-    const track = document.getElementById('photoTrack');
-    track.style.animation = 'none';
-    setTimeout(initScroll, 50);
-  });
-
-  document.addEventListener('contextmenu', e => {
-    if (e.target.tagName === 'IMG') e.preventDefault();
-  });
 </script>
 </body>
 </html>

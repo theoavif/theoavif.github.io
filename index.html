@@ -6,89 +6,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Theo Avif</title>
 <meta name="description" content="Theo Avif — French artist based in Barcelona. Analogue photography, collage and painting.">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html, body {
-    height: 100%;
-    background: #fff;
+  body {
     font-family: 'Outfit', sans-serif;
-  }
-
-  .container {
+    background: #fff;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    text-decoration: none;
   }
-
+  .container {
+    text-decoration: none;
+    color: #000;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
   .title {
-    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-size: clamp(48px, 10vw, 96px);
     font-weight: 200;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+  .sub {
+    font-size: 13px;
+    font-weight: 300;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #111;
-    transition: letter-spacing 0.4s ease;
+    color: #999;
   }
-
-  .container:hover .title {
-    letter-spacing: 0.3em;
-  }
-
-  .sub {
+  .footer {
+    position: fixed;
+    bottom: 24px;
     font-size: 11px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: #aaa;
-    margin-top: 1rem;
-  }
-
-  @keyframes vibrate {
-    0%   { transform: translateX(0); }
-    15%  { transform: translateX(-3px); }
-    30%  { transform: translateX(3px); }
-    45%  { transform: translateX(-2px); }
-    60%  { transform: translateX(2px); }
-    75%  { transform: translateX(-1px); }
-    90%  { transform: translateX(1px); }
-    100% { transform: translateX(0); }
-  }
-
-  .title.vibrating {
-    animation: vibrate 0.5s ease;
-  }
-
-  .footer {
-    position: fixed;
-    bottom: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
     color: #ccc;
+  }
+  @keyframes vibrate {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-1px); }
+    75% { transform: translateX(1px); }
   }
 </style>
 </head>
 <body>
-
 <a class="container" href="gallery/">
   <div class="title" id="mainTitle">Gallery</div>
   <div class="sub">Theo Avif — Barcelona</div>
 </a>
-
 <div class="footer">theoavif.com</div>
-
 <script>
-  const title = document.getElementById('mainTitle');
   setInterval(() => {
-    title.classList.add('vibrating');
-    setTimeout(() => title.classList.remove('vibrating'), 500);
-  }, 5000);
+    const el = document.getElementById('mainTitle');
+    el.style.animation = 'vibrate 0.1s linear 3';
+    setTimeout(() => el.style.animation = '', 300);
+  }, 4000);
 </script>
 </body>
 </html>

@@ -56,7 +56,16 @@
   .inquire-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
   .series-block { padding: 2.5rem 2rem 1.5rem; border-bottom: 1px solid var(--border); }
   .series-block:last-child { border-bottom: none; }
+  @keyframes title-shake {
+    0%,100% { transform: translate(0,0); }
+    20%      { transform: translate(-1px, 0.5px); }
+    40%      { transform: translate(1px, -0.5px); }
+    60%      { transform: translate(-0.5px, 1px); }
+    80%      { transform: translate(0.5px, -1px); }
+  }
   .series-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; cursor: pointer; user-select: none; }
+  .series-header:not(.open) .series-title { animation: title-shake 2.8s ease-in-out infinite; display: inline-block; }
+  .series-header.open .series-title { animation: none; }
   .series-header .series-toggle { font-size: 13px; color: var(--gray); letter-spacing: 0.08em; text-transform: uppercase; transition: opacity 0.2s; opacity: 0.6; }
   .series-header:hover .series-toggle { opacity: 1; }
   .series-header.open .series-toggle { opacity: 1; }

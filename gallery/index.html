@@ -56,10 +56,13 @@
   .inquire-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
   .series-block { padding: 2.5rem 2rem 1.5rem; border-bottom: 1px solid var(--border); }
   .series-block:last-child { border-bottom: none; }
-  .series-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; }
+  .series-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; cursor: pointer; user-select: none; }
+  .series-header .series-toggle { font-size: 18px; color: var(--gray); line-height: 1; transition: transform 0.25s; }
+  .series-header.open .series-toggle { transform: rotate(45deg); }
   .series-title { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); }
   .series-year { font-size: 11px; color: var(--gray); letter-spacing: 0.05em; }
-  .series-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .series-grid { display: none; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .series-grid.open { display: grid; }
   @media (max-width: 900px) { .series-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 500px) { .series-grid { grid-template-columns: 1fr; } }
   .lightbox { display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.97); z-index: 200; align-items: center; justify-content: center; padding: 2rem; }
@@ -175,7 +178,7 @@
   </div>
   <div class="series-section" data-cat="peinture" style="display:none;">
     <div class="series-block">
-      <div class="series-header"><span class="series-title">ATRACCIÓN</span><span class="series-year">2021 — 2026</span></div>
+      <div class="series-header"><span class="series-title">ATRACCIÓN</span><span class="series-year">2021 — 2026</span><span class="series-toggle">+</span></div>
       <div class="series-grid">
         <div class="gallery-item" data-title="Atracción #01" data-desc="Painting · Acrylic on canvas · 100×100cm · 2021" data-price="400 €" data-available="true"><img src="../files_peintures/atr_01.png" alt="Atracción #01"><div class="gallery-item-info"><div class="gallery-item-title">Atracción #01</div><div class="gallery-item-format">100×100cm</div><div class="gallery-item-price">400 €</div></div></div>
         <div class="gallery-item" data-title="Atracción #02" data-desc="Painting · Acrylic on canvas · 100×100cm · 2026" data-price="450 €" data-available="true"><img src="../files_peintures/atr_02.png" alt="Atracción #02"><div class="gallery-item-info"><div class="gallery-item-title">Atracción #02</div><div class="gallery-item-format">100×100cm</div><div class="gallery-item-price">450 €</div></div></div>
@@ -251,6 +254,16 @@
       lightbox.classList.add('open'); document.body.style.overflow = 'hidden';
     });
   });
+  // Accordion
+  document.querySelectorAll('.series-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const grid = header.nextElementSibling;
+      const isOpen = grid.classList.contains('open');
+      grid.classList.toggle('open', !isOpen);
+      header.classList.toggle('open', !isOpen);
+    });
+  });
+
   document.getElementById('lightboxClose').addEventListener('click', () => { lightbox.classList.remove('open'); document.body.style.overflow = ''; });
   lightbox.addEventListener('click', e => { if (e.target === lightbox) { lightbox.classList.remove('open'); document.body.style.overflow = ''; } });
   document.querySelectorAll('.gallery-item').forEach(item => {

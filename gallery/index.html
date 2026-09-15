@@ -57,8 +57,9 @@
   .series-block { padding: 2.5rem 2rem 1.5rem; border-bottom: 1px solid var(--border); }
   .series-block:last-child { border-bottom: none; }
   .series-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; cursor: pointer; user-select: none; }
-  .series-header .series-toggle { font-size: 18px; color: var(--gray); line-height: 1; transition: transform 0.25s; }
-  .series-header.open .series-toggle { transform: rotate(45deg); }
+  .series-header .series-toggle { font-size: 13px; color: var(--gray); letter-spacing: 0.08em; text-transform: uppercase; transition: opacity 0.2s; opacity: 0.6; }
+  .series-header:hover .series-toggle { opacity: 1; }
+  .series-header.open .series-toggle { opacity: 1; }
   .series-title { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--black); }
   .series-year { font-size: 11px; color: var(--gray); letter-spacing: 0.05em; }
   .series-grid { display: none; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
@@ -111,7 +112,7 @@
 <div id="gallery">
   <div class="series-section" data-cat="photo" style="display:none;">
     <div class="series-block">
-      <div class="series-header"><span class="series-title">¿A DÓNDE VAS?</span><span class="series-year">2025</span></div>
+      <div class="series-header"><span class="series-title">¿A DÓNDE VAS?</span><span class="series-year">2025</span><span class="series-toggle">voir →</span></div>
       <div class="series-grid">
         <div class="gallery-item" data-title="¿A Dónde Vas? #01" data-desc="Analogue photography · Format A0 · Matt paper · 2025" data-price="200 €" data-available="true"><img src="../files_photos/adv/adv_01.jpg" alt="¿A Dónde Vas? #01"><div class="gallery-item-info"><div class="gallery-item-title">¿A Dónde Vas? #01</div><div class="gallery-item-format">Format A0</div><div class="gallery-item-price">200 €</div></div></div>
         <div class="gallery-item" data-title="¿A Dónde Vas? #02" data-desc="Analogue photography · 50×70cm · Matt paper · 2025" data-price="150 €" data-available="false"><img src="../files_photos/adv/adv_02.jpg" alt="¿A Dónde Vas? #02"><div class="gallery-item-info"><div class="gallery-item-title">¿A Dónde Vas? #02</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price" style="color:#888;">150 € — <span style="color:#e00;text-transform:uppercase;letter-spacing:0.05em;">Sold</span></div></div></div>
@@ -126,7 +127,7 @@
       </div>
     </div>
     <div class="series-block">
-      <div class="series-header"><span class="series-title">PERSONAL DIARIES</span><span class="series-year">2024</span></div>
+      <div class="series-header"><span class="series-title">PERSONAL DIARIES</span><span class="series-year">2024</span><span class="series-toggle">voir →</span></div>
       <div class="series-grid">
         <div class="gallery-item" data-title="Personal Diaries #01" data-desc="Analogue photography · 50×70cm · Matt paper · 2024" data-price="100 €" data-available="false"><img src="../files_photos/pd/pd_01.jpg" alt="Personal Diaries #01"><div class="gallery-item-info"><div class="gallery-item-title">Personal Diaries #01</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price" style="color:#888;">100 € — <span style="color:#e00;text-transform:uppercase;letter-spacing:0.05em;">Sold</span></div></div></div>
         <div class="gallery-item" data-title="Personal Diaries #02" data-desc="Analogue photography · 50×70cm · Matt paper · 2024" data-price="100 €" data-available="true"><img src="../files_photos/pd/pd_02.jpg" alt="Personal Diaries #02"><div class="gallery-item-info"><div class="gallery-item-title">Personal Diaries #02</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price">100 €</div></div></div>
@@ -136,7 +137,7 @@
       </div>
     </div>
     <div class="series-block">
-      <div class="series-header"><span class="series-title">CONCRETE FLOWERS</span><span class="series-year">2022</span></div>
+      <div class="series-header"><span class="series-title">CONCRETE FLOWERS</span><span class="series-year">2022</span><span class="series-toggle">voir →</span></div>
       <div class="series-grid">
         <div class="gallery-item" data-title="Concrete Flowers #01" data-desc="Analogue photography · Format A0 · Matt paper · 2022" data-price="200 €" data-available="true"><img src="../files_photos/flowers/cf_01.jpg" alt="Concrete Flowers #01"><div class="gallery-item-info"><div class="gallery-item-title">Concrete Flowers #01</div><div class="gallery-item-format">Format A0</div><div class="gallery-item-price">200 €</div></div></div>
         <div class="gallery-item" data-title="Concrete Flowers #02" data-desc="Analogue photography · 50×70cm · Matt paper · 2022" data-price="100 €" data-available="true"><img src="../files_photos/flowers/cf_02.jpg" alt="Concrete Flowers #02"><div class="gallery-item-info"><div class="gallery-item-title">Concrete Flowers #02</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price">100 €</div></div></div>
@@ -154,7 +155,7 @@
   </div>
   <div class="series-section" data-cat="collage" style="display:none;">
     <div class="series-block">
-      <div class="series-header"><span class="series-title">KYDZ</span><span class="series-year">2026</span></div>
+      <div class="series-header"><span class="series-title">KYDZ</span><span class="series-year">2026</span><span class="series-toggle">voir →</span></div>
       <div class="series-grid">
         <div class="gallery-item" data-title="OUTSIDERZ" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="false"><img src="../files_collages/kydz_outsiderz.jpg" alt="OUTSIDERZ"><div class="gallery-item-info"><div class="gallery-item-title">OUTSIDERZ</div><div class="gallery-item-format">40×40cm</div><div class="gallery-item-price" style="color:#888;">150 € — <span style="color:#e00;text-transform:uppercase;letter-spacing:0.05em;">Sold</span></div></div></div>
         <div class="gallery-item" data-title="TRUE LIES" data-desc="Collage · Mixed media · 40×40cm · 2026" data-price="150 €" data-available="true"><img src="../files_collages/kydz_truelies.jpg" alt="TRUE LIES"><div class="gallery-item-info"><div class="gallery-item-title">TRUE LIES</div><div class="gallery-item-format">40×40cm</div><div class="gallery-item-price">150 €</div></div></div>
@@ -168,7 +169,7 @@
       </div>
     </div>
     <div class="series-block">
-      <div class="series-header"><span class="series-title">PERSONAL DIARIES</span><span class="series-year">2024</span></div>
+      <div class="series-header"><span class="series-title">PERSONAL DIARIES</span><span class="series-year">2024</span><span class="series-toggle">voir →</span></div>
       <div class="series-grid">
         <div class="gallery-item" data-title="LE TEMPS" data-desc="Collage · Mixed media · 40×40cm · 2024" data-price="90 €" data-available="true"><img src="../files_collages/pd_letemps.jpg" alt="LE TEMPS"><div class="gallery-item-info"><div class="gallery-item-title">LE TEMPS</div><div class="gallery-item-format">40×40cm</div><div class="gallery-item-price">90 €</div></div></div>
         <div class="gallery-item" data-title="WALKERZ" data-desc="Collage · Mixed media · 30×30cm · 2024" data-price="90 €" data-available="true"><img src="../files_collages/pd_walkerz.jpg" alt="WALKERZ"><div class="gallery-item-info"><div class="gallery-item-title">WALKERZ</div><div class="gallery-item-format">30×30cm</div><div class="gallery-item-price">90 €</div></div></div>
@@ -178,7 +179,7 @@
   </div>
   <div class="series-section" data-cat="peinture" style="display:none;">
     <div class="series-block">
-      <div class="series-header"><span class="series-title">ATRACCIÓN</span><span class="series-year">2021 — 2026</span><span class="series-toggle">+</span></div>
+      <div class="series-header"><span class="series-title">ATRACCIÓN</span><span class="series-year">2021 — 2026</span><span class="series-toggle">voir →</span></div>
       <div class="series-grid">
         <div class="gallery-item" data-title="Atracción #01" data-desc="Painting · Acrylic on canvas · 100×100cm · 2021" data-price="400 €" data-available="true"><img src="../files_peintures/atr_01.png" alt="Atracción #01"><div class="gallery-item-info"><div class="gallery-item-title">Atracción #01</div><div class="gallery-item-format">100×100cm</div><div class="gallery-item-price">400 €</div></div></div>
         <div class="gallery-item" data-title="Atracción #02" data-desc="Painting · Acrylic on canvas · 100×100cm · 2026" data-price="450 €" data-available="true"><img src="../files_peintures/atr_02.png" alt="Atracción #02"><div class="gallery-item-info"><div class="gallery-item-title">Atracción #02</div><div class="gallery-item-format">100×100cm</div><div class="gallery-item-price">450 €</div></div></div>
@@ -226,11 +227,19 @@
   const aboutSection = document.getElementById('aboutSection');
   function applyFilter(filter) {
     if (filter === 'about') { gallery.style.display = 'none'; aboutSection.style.display = 'block'; }
-    else { gallery.style.display = 'block'; aboutSection.style.display = 'none'; sections.forEach(s => { s.style.display = s.dataset.cat === filter ? 'block' : 'none'; }); }
+    else {
+      gallery.style.display = 'block'; aboutSection.style.display = 'none';
+      sections.forEach(s => {
+        if (s.dataset.cat === filter) { s.style.display = 'block'; openFirst(s); }
+        else { s.style.display = 'none'; }
+      });
+    }
   }
   btns.forEach(btn => { btn.addEventListener('click', () => { btns.forEach(b => b.classList.remove('active')); btn.classList.add('active'); applyFilter(btn.dataset.filter); }); });
   sections.forEach(s => s.style.display = 'none');
-  document.querySelector('.series-section[data-cat="peinture"]').style.display = 'block';
+  const initSection = document.querySelector('.series-section[data-cat="peinture"]');
+  initSection.style.display = 'block';
+  openFirst(initSection);
   const lightbox = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightboxImg');
   const lbTitle = document.getElementById('lightboxTitle');
@@ -255,12 +264,23 @@
     });
   });
   // Accordion
+  function openFirst(section) {
+    const headers = section.querySelectorAll('.series-header');
+    headers.forEach((h, i) => {
+      const grid = h.nextElementSibling;
+      const toggle = h.querySelector('.series-toggle');
+      if (i === 0) { grid.classList.add('open'); h.classList.add('open'); if(toggle) toggle.textContent = 'fermer ↑'; }
+      else { grid.classList.remove('open'); h.classList.remove('open'); if(toggle) toggle.textContent = 'voir →'; }
+    });
+  }
   document.querySelectorAll('.series-header').forEach(header => {
     header.addEventListener('click', () => {
       const grid = header.nextElementSibling;
+      const toggle = header.querySelector('.series-toggle');
       const isOpen = grid.classList.contains('open');
       grid.classList.toggle('open', !isOpen);
       header.classList.toggle('open', !isOpen);
+      if (toggle) toggle.textContent = !isOpen ? 'fermer ↑' : 'voir →';
     });
   });
 

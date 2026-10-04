@@ -21,13 +21,13 @@
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 52px; }
   .nav-logo { text-decoration: none; display: flex; align-items: center; }
   @keyframes coin-spin { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
-  .nav-logo { perspective: 400px; }
-  .logo-coin { display: inline-grid; transform-style: preserve-3d; -webkit-transform-style: preserve-3d; animation: coin-spin 5s linear infinite; will-change: transform; }
+  .nav-logo { text-decoration: none; display: flex; align-items: center; }
+  .logo-coin { display: inline-grid; transform-style: preserve-3d; -webkit-transform-style: preserve-3d; animation: coin-spin 5s linear infinite; }
   .logo-face { grid-area: 1/1; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; align-items: center; }
   .logo-face img { height: 40px; width: auto; display: block; }
   .logo-back img { height: 35px; }
-  .logo-front { transform: translateZ(1px); -webkit-transform: translateZ(1px); }
-  .logo-back { transform: rotateY(180deg) translateZ(1px); -webkit-transform: rotateY(180deg) translateZ(1px); }
+  .logo-front { transform: translateZ(0.01px); -webkit-transform: translateZ(0.01px); }
+  .logo-back { transform: rotateY(180deg) translateZ(0.01px); -webkit-transform: rotateY(180deg) translateZ(0.01px); }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--gray); transition: color 0.2s; }
   .nav-links a:hover { color: var(--black); }

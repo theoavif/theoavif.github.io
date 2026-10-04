@@ -21,12 +21,13 @@
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--white); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 52px; }
   .nav-logo { text-decoration: none; display: flex; align-items: center; }
   @keyframes coin-spin { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
-  .logo-coin { display: inline-grid; transform-style: preserve-3d; -webkit-transform-style: preserve-3d; animation: coin-spin 5s linear infinite; }
+  .nav-logo { perspective: 400px; }
+  .logo-coin { display: inline-grid; transform-style: preserve-3d; -webkit-transform-style: preserve-3d; animation: coin-spin 5s linear infinite; will-change: transform; }
   .logo-face { grid-area: 1/1; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; align-items: center; }
   .logo-face img { height: 40px; width: auto; display: block; }
   .logo-back img { height: 35px; }
-  .logo-front { transform: translateZ(0.01px); -webkit-transform: translateZ(0.01px); }
-  .logo-back { transform: rotateY(180deg) translateZ(0.01px); -webkit-transform: rotateY(180deg) translateZ(0.01px); }
+  .logo-front { transform: translateZ(1px); -webkit-transform: translateZ(1px); }
+  .logo-back { transform: rotateY(180deg) translateZ(1px); -webkit-transform: rotateY(180deg) translateZ(1px); }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; color: var(--gray); transition: color 0.2s; }
   .nav-links a:hover { color: var(--black); }
@@ -163,7 +164,7 @@
         <div class="gallery-item" data-title="Concrete Flowers #08" data-desc="Analogue photography · 50×70cm · Matt paper · 2022" data-price="100 €" data-available="true"><img src="../files_photos/flowers/cf_08.jpg" alt="Concrete Flowers #08"><div class="gallery-item-info"><div class="gallery-item-title">Concrete Flowers #08</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price">100 €</div></div></div>
         <div class="gallery-item" data-title="Concrete Flowers #09" data-desc="Analogue photography · 50×70cm · Matt paper · 2022" data-price="100 €" data-available="true"><img src="../files_photos/flowers/cf_09.jpg" alt="Concrete Flowers #09"><div class="gallery-item-info"><div class="gallery-item-title">Concrete Flowers #09</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price">100 €</div></div></div>
         <div class="gallery-item" data-title="Concrete Flowers #12" data-desc="Analogue photography · 50×70cm · Matt paper · 2022" data-price="100 €" data-available="true"><img src="../files_photos/flowers/cf_12.jpg" alt="Concrete Flowers #12"><div class="gallery-item-info"><div class="gallery-item-title">Concrete Flowers #12</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price">100 €</div></div></div>
-        <div class="gallery-item" data-title="Concrete Flowers #13" data-desc="Analogue photography · 50×70cm · Matt paper · 2022" data-price="100 €" data-available="false"><img src="../files_photos/flowers/cf_13.jpg" alt="Concrete Flowers #13"><div class="gallery-item-info"><div class="gallery-item-title">Concrete Flowers #13</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price" style="color:#888;">100 € — <span style="color:#e00;text-transform:uppercase;letter-spacing:0.05em;">Sold</span></div></div></div>
+        <div class="gallery-item" data-title="Concrete Flowers #13" data-desc="Analogue photography · 50×70cm · Matt paper · 2022" data-price="100 €" data-available="false"><img src="../files_photos/flowers/cf_13.jpg" alt="Concrete Flowers #13"><div class="gallery-item-info"><div class="gallery-item-title">Concrete Flowers #13</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price"><span style="color:#888;text-decoration:line-through;">100 €</span> — <span style="color:#e00;text-transform:uppercase;letter-spacing:0.05em;font-size:11px;">Sold</span></div></div></div>
       </div>
     </div>
   </div>

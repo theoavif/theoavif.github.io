@@ -65,8 +65,8 @@
     80%      { transform: translate(0.5px, -1px); }
   }
   .series-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; cursor: pointer; user-select: none; }
-  .series-header:not(.open) .series-title { display: inline-block; }
-  .series-header.open .series-title { }
+  .series-header:not(.open) .series-title { animation: title-shake 2.8s ease-in-out infinite; display: inline-block; }
+  .series-header.open .series-title { animation: none; }
   .series-header .series-toggle { font-size: 13px; color: var(--gray); letter-spacing: 0.08em; text-transform: uppercase; transition: opacity 0.2s; opacity: 0.6; }
   .series-header:hover .series-toggle { opacity: 1; }
   .series-header.open .series-toggle { opacity: 1; }
@@ -163,7 +163,7 @@
         <div class="gallery-item" data-title="Concrete Flowers #08" data-desc="Analogue photography · 50×70cm · Matt paper · 2022" data-price="100 €" data-available="true"><img src="../files_photos/flowers/cf_08.jpg" alt="Concrete Flowers #08"><div class="gallery-item-info"><div class="gallery-item-title">Concrete Flowers #08</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price">100 €</div></div></div>
         <div class="gallery-item" data-title="Concrete Flowers #09" data-desc="Analogue photography · 50×70cm · Matt paper · 2022" data-price="100 €" data-available="true"><img src="../files_photos/flowers/cf_09.jpg" alt="Concrete Flowers #09"><div class="gallery-item-info"><div class="gallery-item-title">Concrete Flowers #09</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price">100 €</div></div></div>
         <div class="gallery-item" data-title="Concrete Flowers #12" data-desc="Analogue photography · 50×70cm · Matt paper · 2022" data-price="100 €" data-available="true"><img src="../files_photos/flowers/cf_12.jpg" alt="Concrete Flowers #12"><div class="gallery-item-info"><div class="gallery-item-title">Concrete Flowers #12</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price">100 €</div></div></div>
-        <div class="gallery-item" data-title="Concrete Flowers #13" data-desc="Analogue photography · 50×70cm · Matt paper · 2022" data-price="100 €" data-available="false"><img src="../files_photos/flowers/cf_13.jpg" alt="Concrete Flowers #13"><div class="gallery-item-info"><div class="gallery-item-title">Concrete Flowers #13</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price"><span style="color:#888;text-decoration:line-through;">100 €</span> — <span style="color:#e00;text-transform:uppercase;letter-spacing:0.05em;font-size:11px;">Sold</span></div></div></div>
+        <div class="gallery-item" data-title="Concrete Flowers #13" data-desc="Analogue photography · 50×70cm · Matt paper · 2022" data-price="100 €" data-available="false"><img src="../files_photos/flowers/cf_13.jpg" alt="Concrete Flowers #13"><div class="gallery-item-info"><div class="gallery-item-title">Concrete Flowers #13</div><div class="gallery-item-format">50×70cm</div><div class="gallery-item-price" style="color:#888;">100 € — <span style="color:#e00;text-transform:uppercase;letter-spacing:0.05em;">Sold</span></div></div></div>
       </div>
     </div>
   </div>

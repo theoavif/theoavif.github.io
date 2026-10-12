@@ -18,8 +18,18 @@
 <link rel="icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DD56LG4ENB"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DD56LG4ENB');</script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  function loadGA(){
+    var s=document.createElement('script');
+    s.async=true;
+    s.src='https://www.googletagmanager.com/gtag/js?id=G-DD56LG4ENB';
+    document.head.appendChild(s);
+    gtag('js',new Date());gtag('config','G-DD56LG4ENB');
+  }
+  if(localStorage.getItem('cookie_consent')==='true') loadGA();
+</script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { min-height: 100%; }
@@ -105,6 +115,13 @@
   footer a { text-decoration: none; }
   footer a:hover { color: var(--black); }
   img { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; pointer-events: none; }
+  #cookie-banner { position: fixed; bottom: 0; left: 0; right: 0; background: var(--black); color: var(--white); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; z-index: 999; font-size: 11px; letter-spacing: 0.05em; }
+  #cookie-banner p { color: rgba(255,255,255,0.7); max-width: 600px; }
+  .cookie-btns { display: flex; gap: 0.75rem; flex-shrink: 0; }
+  .cookie-btn { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; border: 1px solid rgba(255,255,255,0.3); background: none; color: var(--white); cursor: pointer; transition: all 0.2s; }
+  .cookie-btn.accept { background: var(--white); color: var(--black); border-color: var(--white); }
+  .cookie-btn:hover { opacity: 0.7; }
+  @media (max-width: 600px) { #cookie-banner { flex-direction: column; align-items: flex-start; } }
   #scrollTop { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 36px; height: 36px; background: rgba(0,0,0,0.35); color: var(--white); border: none; cursor: pointer; font-size: 16px; display: none; align-items: center; justify-content: center; z-index: 100; transition: background 0.2s; }
   #scrollTop:hover { background: rgba(0,0,0,0.7); }
 </style>
@@ -233,6 +250,31 @@
   </div>
 </div>
 <footer><p>© 2026 Theo Avif</p><a href="https://instagram.com/theo.avif" target="_blank">@theo.avif</a></footer>
+
+<div id="cookie-banner" style="display:none;">
+  <p>Ce site utilise des cookies analytiques pour mesurer l'audience. Vos données restent anonymes.</p>
+  <div class="cookie-btns">
+    <button class="cookie-btn" id="cookie-decline">Refuser</button>
+    <button class="cookie-btn accept" id="cookie-accept">Accepter</button>
+  </div>
+</div>
+
+<script>
+  (function(){
+    if(!localStorage.getItem('cookie_consent')){
+      document.getElementById('cookie-banner').style.display='flex';
+    }
+    document.getElementById('cookie-accept').addEventListener('click',function(){
+      localStorage.setItem('cookie_consent','true');
+      document.getElementById('cookie-banner').style.display='none';
+      loadGA();
+    });
+    document.getElementById('cookie-decline').addEventListener('click',function(){
+      localStorage.setItem('cookie_consent','false');
+      document.getElementById('cookie-banner').style.display='none';
+    });
+  })();
+</script>
 <script>
   const btns = document.querySelectorAll('.filter-btn');
   const sections = document.querySelectorAll('.series-section');

@@ -135,6 +135,20 @@
   .merch-order-btn { display: inline-block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 16px; border: 1px solid var(--black); color: var(--black); text-decoration: none; transition: all 0.2s; text-align: center; }
   .merch-order-btn:hover { background: var(--black); color: var(--white); }
   .merch-order-btn.disabled { border-color: var(--border); color: var(--gray); pointer-events: none; }
+  #merchLightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 200; align-items: center; justify-content: center; padding: 2rem; }
+  #merchLightbox.open { display: flex; }
+  .merch-lb-inner { background: var(--white); max-width: 900px; width: 100%; display: grid; grid-template-columns: 1fr 1fr; max-height: 90vh; overflow-y: auto; }
+  .merch-lb-photos { display: flex; flex-direction: column; gap: 2px; background: #f5f5f5; }
+  .merch-lb-photos img { width: 100%; object-fit: cover; }
+  .merch-lb-info { padding: 2.5rem 2rem; display: flex; flex-direction: column; gap: 1rem; position: relative; }
+  .merch-lb-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 22px; cursor: pointer; color: var(--black); line-height: 1; }
+  .merch-lb-title { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 200; letter-spacing: 0.12em; text-transform: uppercase; }
+  .merch-lb-edition { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); }
+  .merch-lb-desc { font-size: 12px; color: #555; line-height: 1.7; letter-spacing: 0.03em; }
+  .merch-lb-price { font-size: 14px; letter-spacing: 0.08em; margin-top: auto; }
+  .merch-lb-price.sold-out { color: #888; }
+  .merch-lb-price.sold-out span { color: #e00; text-transform: uppercase; font-size: 11px; }
+  @media (max-width: 640px) { .merch-lb-inner { grid-template-columns: 1fr; } }
   #scrollTop { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 36px; height: 36px; background: rgba(0,0,0,0.35); color: var(--white); border: none; cursor: pointer; font-size: 16px; display: none; align-items: center; justify-content: center; z-index: 100; transition: background 0.2s; }
   #scrollTop:hover { background: rgba(0,0,0,0.7); }
 </style>
@@ -252,34 +266,37 @@
 </div>
 <div id="merchSection">
   <div class="merch-grid">
-    <div class="merch-item">
+    <div class="merch-item" style="cursor:pointer;" onclick="openMerchLb('cap')">
       <img src="/files_merch/merch_cap.jpg" alt="KYDZ Cap">
       <div class="merch-item-info">
         <div class="merch-item-title">KYDZ Cap</div>
         <div class="merch-item-desc">Embroidered · Black · One size</div>
         <div class="merch-item-price">30 €</div>
-        <a class="merch-order-btn" href="https://instagram.com/theo.avif" target="_blank">Order via Instagram ↗</a>
+        <a class="merch-order-btn" onclick="event.stopPropagation();" href="https://instagram.com/theo.avif" target="_blank">Order via Instagram ↗</a>
       </div>
     </div>
-    <div class="merch-item">
+    <div class="merch-item" style="cursor:pointer;" onclick="openMerchLb('tshirt')">
       <img src="/files_merch/merch_tshirt.jpg" alt="Outsiderz T-shirt">
       <div class="merch-item-info">
         <div class="merch-item-title">Outsiderz T-shirt</div>
-        <div class="merch-item-desc">Oversized · Black · Printed</div>
+        <div class="merch-item-desc">Oversized · Black · S / M / L</div>
         <div class="merch-item-price">20 €</div>
-        <a class="merch-order-btn" href="https://instagram.com/theo.avif" target="_blank">Order via Instagram ↗</a>
+        <a class="merch-order-btn" onclick="event.stopPropagation();" href="https://instagram.com/theo.avif" target="_blank">Order via Instagram ↗</a>
       </div>
     </div>
-    <div class="merch-item">
+    <div class="merch-item" style="cursor:pointer;" onclick="openMerchLb('fanzine')">
       <img src="/files_merch/merch_fanzine.jpg" alt="Personal Diary Fanzine">
       <div class="merch-item-info">
         <div class="merch-item-title">Personal Diary</div>
         <div class="merch-item-desc">Fanzine · Edition 2024</div>
         <div class="merch-item-price sold-out">20 € — <span>Sold out</span></div>
-        <a class="merch-order-btn disabled">Sold out</a>
+        <a class="merch-order-btn disabled" onclick="event.stopPropagation();">Sold out</a>
       </div>
     </div>
   </div>
+</div>
+<div id="merchLightbox" onclick="if(event.target===this)closeMerchLb()">
+  <div class="merch-lb-inner" id="merchLbInner"></div>
 </div>
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightboxClose">×</button>
@@ -321,6 +338,56 @@
   })();
 </script>
 <script>
+  const MERCH = {
+    cap: {
+      title: 'KYDZ Cap',
+      edition: 'Limited edition · 15 pieces',
+      desc: 'Black cotton cap · KYDZ embroidery on front · "ROCKING IT" embroidery on back · One size',
+      price: '30 €',
+      available: true,
+      photos: ['/files_merch/merch_cap.jpg', '/files_merch/merch_cap_02.jpg', '/files_merch/merch_cap_03.jpg', '/files_merch/merch_cap_04.jpg']
+    },
+    tshirt: {
+      title: 'Outsiderz T-shirt',
+      edition: 'Limited edition · 20 pieces',
+      desc: 'Black oversized t-shirt · "Outsiderz" printed on chest · Sizes S / M / L',
+      price: '20 €',
+      available: true,
+      photos: ['/files_merch/merch_tshirt.jpg']
+    },
+    fanzine: {
+      title: 'Personal Diary',
+      edition: 'Limited edition · 50 copies',
+      desc: 'Photography fanzine · Printed cover · Sealed in plastic · Edition 2024',
+      price: '20 €',
+      available: false,
+      photos: ['/files_merch/merch_fanzine.jpg']
+    }
+  };
+  function openMerchLb(key) {
+    const p = MERCH[key];
+    const photos = p.photos.map(src => `<img src="${src}" alt="${p.title}">`).join('');
+    const priceHtml = p.available ? `<div class="merch-lb-price">${p.price}</div>` : `<div class="merch-lb-price sold-out">${p.price} — <span>Sold out</span></div>`;
+    const btnHtml = p.available ? `<a class="merch-order-btn" href="https://instagram.com/theo.avif" target="_blank">Order via Instagram ↗</a>` : `<a class="merch-order-btn disabled">Sold out</a>`;
+    document.getElementById('merchLbInner').innerHTML = `
+      <div class="merch-lb-photos">${photos}</div>
+      <div class="merch-lb-info">
+        <button class="merch-lb-close" onclick="closeMerchLb()">×</button>
+        <div class="merch-lb-title">${p.title}</div>
+        <div class="merch-lb-edition">${p.edition}</div>
+        <div class="merch-lb-desc">${p.desc}</div>
+        ${priceHtml}
+        ${btnHtml}
+      </div>`;
+    document.getElementById('merchLightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMerchLb() {
+    document.getElementById('merchLightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeMerchLb(); });
+
   const btns = document.querySelectorAll('.filter-btn');
   const sections = document.querySelectorAll('.series-section');
   const gallery = document.getElementById('gallery');

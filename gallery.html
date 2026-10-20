@@ -122,6 +122,19 @@
   .cookie-btn.accept { background: var(--white); color: var(--black); border-color: var(--white); }
   .cookie-btn:hover { opacity: 0.7; }
   @media (max-width: 600px) { #cookie-banner { flex-direction: column; align-items: flex-start; } }
+  #merchSection { display: none; padding: 2rem; max-width: 1100px; margin: 0 auto; }
+  .merch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 2rem; }
+  .merch-item { display: flex; flex-direction: column; }
+  .merch-item img { width: 100%; aspect-ratio: 1/1; object-fit: contain; background: var(--white); border: 1px solid var(--border); }
+  .merch-item-info { padding: 1rem 0 0; }
+  .merch-item-title { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 400; margin-bottom: 0.3rem; }
+  .merch-item-desc { font-size: 11px; color: var(--gray); letter-spacing: 0.05em; margin-bottom: 0.6rem; }
+  .merch-item-price { font-size: 12px; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+  .merch-item-price.sold-out { color: #888; }
+  .merch-item-price.sold-out span { color: #e00; text-transform: uppercase; letter-spacing: 0.05em; }
+  .merch-order-btn { display: inline-block; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 16px; border: 1px solid var(--black); color: var(--black); text-decoration: none; transition: all 0.2s; text-align: center; }
+  .merch-order-btn:hover { background: var(--black); color: var(--white); }
+  .merch-order-btn.disabled { border-color: var(--border); color: var(--gray); pointer-events: none; }
   #scrollTop { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 36px; height: 36px; background: rgba(0,0,0,0.35); color: var(--white); border: none; cursor: pointer; font-size: 16px; display: none; align-items: center; justify-content: center; z-index: 100; transition: background 0.2s; }
   #scrollTop:hover { background: rgba(0,0,0,0.7); }
 </style>
@@ -145,6 +158,7 @@
   <button class="filter-btn active" data-filter="peinture">Painting</button>
   <button class="filter-btn" data-filter="collage">Collage</button>
   <button class="filter-btn" data-filter="photo">Photography</button>
+  <button class="filter-btn" data-filter="merch">Merch</button>
   <button class="filter-btn" data-filter="about">About</button>
 </div>
 <div id="gallery">
@@ -236,6 +250,37 @@
     </div>
   </div>
 </div>
+<div id="merchSection">
+  <div class="merch-grid">
+    <div class="merch-item">
+      <img src="/files_merch/merch_cap.jpg" alt="KYDZ Cap">
+      <div class="merch-item-info">
+        <div class="merch-item-title">KYDZ Cap</div>
+        <div class="merch-item-desc">Embroidered · Black · One size</div>
+        <div class="merch-item-price">30 €</div>
+        <a class="merch-order-btn" href="https://instagram.com/theo.avif" target="_blank">Order via Instagram ↗</a>
+      </div>
+    </div>
+    <div class="merch-item">
+      <img src="/files_merch/merch_fanzine.jpg" alt="Personal Diary Fanzine">
+      <div class="merch-item-info">
+        <div class="merch-item-title">Personal Diary</div>
+        <div class="merch-item-desc">Fanzine · Edition 2024</div>
+        <div class="merch-item-price sold-out">20 € — <span>Sold out</span></div>
+        <a class="merch-order-btn disabled">Sold out</a>
+      </div>
+    </div>
+    <div class="merch-item">
+      <img src="/files_merch/merch_tshirt.jpg" alt="Outsiderz T-shirt">
+      <div class="merch-item-info">
+        <div class="merch-item-title">Outsiderz T-shirt</div>
+        <div class="merch-item-desc">Oversized · Black · Printed</div>
+        <div class="merch-item-price">20 €</div>
+        <a class="merch-order-btn" href="https://instagram.com/theo.avif" target="_blank">Order via Instagram ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightboxClose">×</button>
   <div class="lightbox-inner">
@@ -280,10 +325,12 @@
   const sections = document.querySelectorAll('.series-section');
   const gallery = document.getElementById('gallery');
   const aboutSection = document.getElementById('aboutSection');
+  const merchSection = document.getElementById('merchSection');
   function applyFilter(filter) {
-    if (filter === 'about') { gallery.style.display = 'none'; aboutSection.style.display = 'block'; }
+    if (filter === 'about') { gallery.style.display = 'none'; aboutSection.style.display = 'block'; merchSection.style.display = 'none'; }
+    else if (filter === 'merch') { gallery.style.display = 'none'; aboutSection.style.display = 'none'; merchSection.style.display = 'block'; }
     else {
-      gallery.style.display = 'block'; aboutSection.style.display = 'none';
+      gallery.style.display = 'block'; aboutSection.style.display = 'none'; merchSection.style.display = 'none';
       sections.forEach(s => {
         if (s.dataset.cat === filter) { s.style.display = 'block'; openFirst(s); }
         else { s.style.display = 'none'; }

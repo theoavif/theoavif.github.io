@@ -407,9 +407,7 @@
   }
   btns.forEach(btn => { btn.addEventListener('click', () => { btns.forEach(b => b.classList.remove('active')); btn.classList.add('active'); applyFilter(btn.dataset.filter); }); });
   sections.forEach(s => s.style.display = 'none');
-  const initSection = document.querySelector('.series-section[data-cat="peinture"]');
-  initSection.style.display = 'block';
-  openFirst(initSection);
+  applyFilter('collage');
   const lightbox = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightboxImg');
   const lbTitle = document.getElementById('lightboxTitle');
